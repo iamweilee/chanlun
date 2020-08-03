@@ -1,8 +1,8 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "ChanlunCore.h"
 
 
-// ³õÊ¼»¯¾²Ì¬±äÁ¿
+// åˆå§‹åŒ–é™æ€å˜é‡
 ChanlunCore* ChanlunCore::instance = NULL;
 
 const int ChanlunCore::DIR_0 = 0; 
@@ -10,8 +10,8 @@ const int ChanlunCore::DIR_UP = 1;
 const int ChanlunCore::DIR_DN = -1;
 const int ChanlunCore::DIR_XBH = -2;
 const int ChanlunCore::DIR_SBH = 2;
-const int ChanlunCore::QK_N = 0; // ²»´æÔÚÈ±¿Ú
-const int ChanlunCore::QK_Y = 1; // ´æÔÚÈ±¿Ú
+const int ChanlunCore::QK_N = 0; // ä¸å­˜åœ¨ç¼ºå£
+const int ChanlunCore::QK_Y = 1; // å­˜åœ¨ç¼ºå£
 
 ChanlunCore::ChanlunCore()
 {
@@ -47,21 +47,21 @@ void ChanlunCore::initBiQK(CALCINFO* pData)
 	{
 	case MIN1_DATA: // 1F
 		biQuekou = qk;
-	case MIN5_DATA:					//5·ÖÖÓÏß		
+	case MIN5_DATA:					//5åˆ†é’Ÿçº¿		
 		biQuekou = qk * 3;
-	case MIN15_DATA:					//15·ÖÖÓÏß
+	case MIN15_DATA:					//15åˆ†é’Ÿçº¿
 		biQuekou = qk * 6;
-	case MIN30_DATA:					//30·ÖÖÓÏß
+	case MIN30_DATA:					//30åˆ†é’Ÿçº¿
 		biQuekou = qk * 9;
-	case MIN60_DATA:					//60·ÖÖÓÏß
+	case MIN60_DATA:					//60åˆ†é’Ÿçº¿
 		biQuekou = qk * 18;
-	case DAY_DATA:					//ÈÕÏß
+	case DAY_DATA:					//æ—¥çº¿
 		biQuekou = qk * 30;
-	case WEEK_DATA:					//ÖÜÏß
+	case WEEK_DATA:					//å‘¨çº¿
 		biQuekou = qk * 90;
-	case MONTH_DATA:					//ÔÂÏß
+	case MONTH_DATA:					//æœˆçº¿
 		biQuekou = qk * 250;
-		//case YEAR_DATA:				//Ã»ÓĞÄêÏß£¿£¿
+		//case YEAR_DATA:				//æ²¡æœ‰å¹´çº¿ï¼Ÿï¼Ÿ
 		//	biQuekou = qk * 1000;
 		
 	default:
@@ -83,12 +83,12 @@ void ChanlunCore::initKx(CALCINFO* pData)
 		
 		int tj_jg = 5;
 		
-		/* °´ÖÜÆÚÈ¡
+		/* æŒ‰å‘¨æœŸå–
 		int dt = pData->m_dataType;
 		h = pData->m_pData[dt, i].m_fHigh;
 		l = pData->m_pData[dt, i].m_fLow;
 		*/
-		// ´¦Àí°üº¬¹ØÏµ
+		// å¤„ç†åŒ…å«å…³ç³»
 		for(int i=0; i<pData->m_nNumData; i++)
 		{
 			h = pData->m_pData[i].m_fHigh;
@@ -96,11 +96,11 @@ void ChanlunCore::initKx(CALCINFO* pData)
 			
 			if (dir > DIR_0)
 			{
-				// ´æÔÚ°üº¬¹ØÏµ
+				// å­˜åœ¨åŒ…å«å…³ç³»
 				if ((h>=h1 && l<=l1) 
 					|| (h<=h1 && l>=l1))
 				{
-					// ¸ßµãµÄ¸ßµã µÍµãµÄ¸ßµã
+					// é«˜ç‚¹çš„é«˜ç‚¹ ä½ç‚¹çš„é«˜ç‚¹
 					h = h>h1 ? h : h1;
 					l = l>l1 ? l : l1;
 					
@@ -112,11 +112,11 @@ void ChanlunCore::initKx(CALCINFO* pData)
 			else if (dir < DIR_0)
 			{
 				
-				// ´æÔÚ°üº¬¹ØÏµ
+				// å­˜åœ¨åŒ…å«å…³ç³»
 				if ((h>=h1 && l<=l1) 
 					|| (h<=h1 && l>=l1))
 				{
-					// ¸ßµãµÄµÍµã µÍµãµÄµÍµã
+					// é«˜ç‚¹çš„ä½ç‚¹ ä½ç‚¹çš„ä½ç‚¹
 					h = h>h1 ? h1 : h;
 					l = l>l1 ? l1 : l;
 					
@@ -166,8 +166,8 @@ void ChanlunCore::initFX()
 		float p31 = 0, p32 = 0, p33 = 0, quekou = 0;
 		bool tjg1 = false, tjd1 = false, tjc = false;
 		
-		int jg = 0, jg2 = 0; // ÖÁÉÙ5¸ùKÏß
-		int gdnum = 0;  //¶¥µ×ÊıÁ¿
+		int jg = 0, jg2 = 0; // è‡³å°‘5æ ¹Kçº¿
+		int gdnum = 0;  //é¡¶åº•æ•°é‡
 
 		int tj_jg = 3, tj_jg2 = 3;
 		//if (pData->m_dataType > WEEK_DATA) tj_jg = 4;
@@ -177,11 +177,11 @@ void ChanlunCore::initFX()
 		kx = kxData.begin();
 		kx = getCKX(2);
 
-		// ±ê³ö¶¥µ×·ÖĞÍ
+		// æ ‡å‡ºé¡¶åº•åˆ†å‹
 		for(i=2; i<kxnum-1; i++, kx++)
 		{
 			jg++;
-			//if(DIR_DN==kx->dir || DIR_UP==kx->dir) jg2++; // ´¦Àí°üº¬¹ØÏµºóµÄ¼ä¸ô
+			//if(DIR_DN==kx->dir || DIR_UP==kx->dir) jg2++; // å¤„ç†åŒ…å«å…³ç³»åçš„é—´éš”
 
 			h11 = 0, h12 = 0, h13 = 0, h21 = 0, l11 = 0, l12 = 0, l13 = 0,  l21 = 0, p31 = 0, p32 = 0, p33 = 0;
 			
@@ -192,7 +192,7 @@ void ChanlunCore::initFX()
 			
 			j = i;
 			kxt = kx;			
-			// Ç°µÚÒ»¸ö¸ßµã
+			// å‰ç¬¬ä¸€ä¸ªé«˜ç‚¹
 			do {
 				j = j - 1;
 				if(j>0) 
@@ -202,7 +202,7 @@ void ChanlunCore::initFX()
 					l11 = kxt->low;
 				}			
 			} while(h11 == h && j>0);
-			// Ç°µÚ¶ş¸ö¸ßµã
+			// å‰ç¬¬äºŒä¸ªé«˜ç‚¹
 				j = j - 1;
 				if(j>0) 
 				{
@@ -210,7 +210,7 @@ void ChanlunCore::initFX()
 					h12 = kxt->high;	
 				}			
 			
-			// Ç°µÚÈı¸ö¸ßµã
+			// å‰ç¬¬ä¸‰ä¸ªé«˜ç‚¹
 				j = j - 1;
 				if(j>0) 
 				{
@@ -220,7 +220,7 @@ void ChanlunCore::initFX()
 
 			k = i;
 			kxt = kx;
-			// ºóµÚÒ»¸ö¸ßµã
+			// åç¬¬ä¸€ä¸ªé«˜ç‚¹
 			do {
 				k = k + 1;
 				if(k<kxnum-1) 
@@ -231,15 +231,15 @@ void ChanlunCore::initFX()
 				}			
 			} while(h21 == h && k<kxnum-1);
 			
-			// ¶¥ÅĞ¶Ï ²øÂÛ¶¨Òå ÒÔ¼° ×î¸ß>¶¥·ÖµÄÇ°2¸ùKÏßµÄ¸ßµã
+			// é¡¶åˆ¤æ–­ ç¼ è®ºå®šä¹‰ ä»¥åŠ æœ€é«˜>é¡¶åˆ†çš„å‰2æ ¹Kçº¿çš„é«˜ç‚¹
 			tjg1 = h>h11 && h>h21 && h>h12 && h>h13 ;
 			
-			// ·Ç¶¥
+			// éé¡¶
 			if(!tjg1)
 			{				
 				j = i;
 				kxt = kx;			
-				// Ç°µÚÒ»¸öµÍµã
+				// å‰ç¬¬ä¸€ä¸ªä½ç‚¹
 				do {
 					j = j - 1;
 					if(j>0) 
@@ -249,7 +249,7 @@ void ChanlunCore::initFX()
 						l11 = kxt->low;
 					}			
 				} while(l11 == l && j>0);
-				// Ç°µÚ2¸öµÍµã
+				// å‰ç¬¬2ä¸ªä½ç‚¹
 				j = j - 1;
 				if(j>0) 
 				{
@@ -258,7 +258,7 @@ void ChanlunCore::initFX()
 					l12 = kxt->low;
 				}			
 			
-				// Ç°µÚ3¸öµÍµã
+				// å‰ç¬¬3ä¸ªä½ç‚¹
 				j = j - 1;
 				if(j>0) 
 				{
@@ -270,7 +270,7 @@ void ChanlunCore::initFX()
 				
 				k = i;
 				kxt = kx;
-				// ºóµÚÒ»¸öµÍµã
+				// åç¬¬ä¸€ä¸ªä½ç‚¹
 				do {
 					k = k + 1;
 					if(k<kxnum-1) 
@@ -281,17 +281,17 @@ void ChanlunCore::initFX()
 					}			
 				} while(l21 == l && k<kxnum-1);
 				
-				// µ×ÅĞ¶Ï ²øÂÛ¶¨Òå ÒÔ¼° ×îµÍ<µ×·ÖµÄÇ°2¸ùKÏßµÄµÍµã
+				// åº•åˆ¤æ–­ ç¼ è®ºå®šä¹‰ ä»¥åŠ æœ€ä½<åº•åˆ†çš„å‰2æ ¹Kçº¿çš„ä½ç‚¹
 				tjd1 = l<l11 && l<l21 && l<l13 && l<l12;
-			} // ·Ç¶¥
+			} // éé¡¶
 			
 			
-			// ±ê³ö¶¥µ×·ÖĞÍ
+			// æ ‡å‡ºé¡¶åº•åˆ†å‹
 			if (tjg1 || tjd1)
 			{
 				if (0 == gdnum)
 				{
-					// µÚÒ»¸ö·ÖĞÍ
+					// ç¬¬ä¸€ä¸ªåˆ†å‹
 					if (tjg1)
 					{
 						kx->flag = DIR_UP;
@@ -311,12 +311,12 @@ void ChanlunCore::initFX()
 				{
 					if (tjg1)
 					{
-						// ¼ÆËã±ß½ç
+						// è®¡ç®—è¾¹ç•Œ
 						kxt = kx;
 						kxt--;
 						p31 = kxt->low;
 						kx->fxqj = p31;
-						// Èç¹û´æÔÚÈ±¿Ú È±¿Ú±ß½ç¾ÍÎ´±¾KÏßµÄ¶¥µ× (ÉÏÕÇÈ±¿Ú)
+						// å¦‚æœå­˜åœ¨ç¼ºå£ ç¼ºå£è¾¹ç•Œå°±æœªæœ¬Kçº¿çš„é¡¶åº• (ä¸Šæ¶¨ç¼ºå£)
 						
 						if (i>1)
 						{
@@ -330,7 +330,7 @@ void ChanlunCore::initFX()
 						}
 						
 
-						// ¶¥½Ó¶¥ ¼Û¸ßÎªĞÂ¶¥
+						// é¡¶æ¥é¡¶ ä»·é«˜ä¸ºæ–°é¡¶
 						if(DIR_UP == kxl->flag)
 						{
 							if(kx->high > kxl->high)
@@ -351,8 +351,8 @@ void ChanlunCore::initFX()
 						}
 						else
 						{
-							// µ×½Ó¶¥ 
-							// °üº¬ºóµÄKÏßÖÁÉÙ3¸ú ¹¹³É¶¥·Ö ×î¸ßÖµ±ØĞë´óÓÚÇ°µÍ·Ö¸ß£¨²»ÔÙ¶¥µÄ·ÖĞÍÇø¼äÄÚ£©
+							// åº•æ¥é¡¶ 
+							// åŒ…å«åçš„Kçº¿è‡³å°‘3è·Ÿ æ„æˆé¡¶åˆ† æœ€é«˜å€¼å¿…é¡»å¤§äºå‰ä½åˆ†é«˜ï¼ˆä¸å†é¡¶çš„åˆ†å‹åŒºé—´å†…ï¼‰
 							if(jg >= tj_jg && kx->high > kxl->fxqj && kx->fxqj > kxl->low)
 							{
 								kx->flag = DIR_UP;
@@ -366,11 +366,11 @@ void ChanlunCore::initFX()
 							else if(jg == 2)
 							{
 								
-								// 1 ´æÔÚÈ±¿Ú(ÉÏÕÇ) 2 ´óÓÚÇ°¶¥
+								// 1 å­˜åœ¨ç¼ºå£(ä¸Šæ¶¨) 2 å¤§äºå‰é¡¶
 								
 								if(i>1 && quekou  >= biQuekou)
 								{
-									// ´æÔÚÈ±¿Ú ¶¥·Ö³ÉÁ¢ Ç°µ×·ÖÒ²ÓĞĞ§ 
+									// å­˜åœ¨ç¼ºå£ é¡¶åˆ†æˆç«‹ å‰åº•åˆ†ä¹Ÿæœ‰æ•ˆ 
 									kx->flag = DIR_UP;
 									gdnum++;
 									jg = 1;
@@ -381,7 +381,7 @@ void ChanlunCore::initFX()
 								}
 								else if(gdnum>=4 && quekou  < biQuekou && kx->high > kxlg->high)
 								{
-									// ´óÓÚÇ°¶¥£¬ Ç°µ×Ê§Ğ§ Ç°¶¥Ê§Ğ§
+									// å¤§äºå‰é¡¶ï¼Œ å‰åº•å¤±æ•ˆ å‰é¡¶å¤±æ•ˆ
 									kx->flag = DIR_UP;
 									kxlg->flag = DIR_SBH;
 									kxld->flag = DIR_0;
@@ -399,12 +399,12 @@ void ChanlunCore::initFX()
 					}
 					else if (tjd1)
 					{
-						// ¼ÆËã±ß½ç
+						// è®¡ç®—è¾¹ç•Œ
 						kxt = kx;
 						kxt--;
 						p31 = kxt->high;
 						kx->fxqj = p31;
-						// Èç¹û´æÔÚÈ±¿Ú È±¿Ú±ß½ç¾ÍÎ´±¾KÏßµÄ¶¥µ× (ÏÂµøÈ±¿Ú)
+						// å¦‚æœå­˜åœ¨ç¼ºå£ ç¼ºå£è¾¹ç•Œå°±æœªæœ¬Kçº¿çš„é¡¶åº• (ä¸‹è·Œç¼ºå£)
 						if(i>1)
 						{
 							j = i - 1;
@@ -417,7 +417,7 @@ void ChanlunCore::initFX()
 						}
 
 
-						// µ×½Óµ× ¼ÛµÍÎªĞÂµ×
+						// åº•æ¥åº• ä»·ä½ä¸ºæ–°åº•
 						if(DIR_DN == kxl->flag)
 						{
 							if(kx->low < kxl->low)
@@ -438,7 +438,7 @@ void ChanlunCore::initFX()
 						}
 						else
 						{
-							// ¶¥½Óµ× °üº¬ºóµÄKÏßÖÁÉÙ3 ¹¹³Éµ×·Ö ×îµÍÖµ±ØĞëĞ¡ÓÚÇ°¶¥µÍ ²»ÔÙ¶¥Çø¼äÄÚ
+							// é¡¶æ¥åº• åŒ…å«åçš„Kçº¿è‡³å°‘3 æ„æˆåº•åˆ† æœ€ä½å€¼å¿…é¡»å°äºå‰é¡¶ä½ ä¸å†é¡¶åŒºé—´å†…
 							if(jg >= tj_jg && kx->low < kxl->fxqj && kx->fxqj < kxl->high)
 							{
 								kx->flag = DIR_DN;
@@ -451,10 +451,10 @@ void ChanlunCore::initFX()
 							}
 							else if(jg == 2)
 							{
-								// 1 ´æÔÚÈ±¿Ú(ÏÂµø) 2 Ğ¡ÓÚÇ°µ×
+								// 1 å­˜åœ¨ç¼ºå£(ä¸‹è·Œ) 2 å°äºå‰åº•
 								if(i>1 && quekou  >= biQuekou)
 								{
-									// ´æÔÚÈ±¿Ú ¶¥·Ö³ÉÁ¢ Ç°µ×·ÖÒ²ÓĞĞ§ 
+									// å­˜åœ¨ç¼ºå£ é¡¶åˆ†æˆç«‹ å‰åº•åˆ†ä¹Ÿæœ‰æ•ˆ 
 									kx->flag = DIR_DN;
 									gdnum++;
 									jg = 1;
@@ -466,7 +466,7 @@ void ChanlunCore::initFX()
 								
 								else if(gdnum>=4 && quekou  < biQuekou  && kx->low < kxld->low)
 								{
-									// ´óÓÚÇ°¶¥£¬ Ç°µ×Ê§Ğ§ Ç°¶¥Ê§Ğ§
+									// å¤§äºå‰é¡¶ï¼Œ å‰åº•å¤±æ•ˆ å‰é¡¶å¤±æ•ˆ
 									kx->flag = DIR_DN;
 									kxld->flag = DIR_XBH;
 									kxlg->flag = DIR_0;
@@ -482,21 +482,21 @@ void ChanlunCore::initFX()
 						}
 					}					
 				}
-			} // end ¶¥µ×
+			} // end é¡¶åº•
 			else 
 			{
 				// do nothing
-			} // end else  ·Ç¶¥µ×
+			} // end else  éé¡¶åº•
 
 
-		} // end for ±ê³ö¶¥µ×·ÖĞÍ
+		} // end for æ ‡å‡ºé¡¶åº•åˆ†å‹
 
 		
-		// µ±ÏÂ 
+		// å½“ä¸‹ 
 		kxt = kxData.end();
-		kxt--; // ×îºóÒ»¸ùKÏß
-		// ·Ç¶¥ ·Çµ× ÓÃÓÚÅĞ¶Ïµ±ÏÂ ¶¥µ×Î´³ÉÖ®Ç°
-		// ´´ĞÂ¸ß µÍ ±ØÈ»²úÉúĞÂµÄ¸ßµãºÍµÍµã È¥µôÇ°Ò»¸ö¸ßµÍµã ×¢Òâ±ØĞëÊÇ¸ß¸ß µÍµÍ
+		kxt--; // æœ€åä¸€æ ¹Kçº¿
+		// éé¡¶ éåº• ç”¨äºåˆ¤æ–­å½“ä¸‹ é¡¶åº•æœªæˆä¹‹å‰
+		// åˆ›æ–°é«˜ ä½ å¿…ç„¶äº§ç”Ÿæ–°çš„é«˜ç‚¹å’Œä½ç‚¹ å»æ‰å‰ä¸€ä¸ªé«˜ä½ç‚¹ æ³¨æ„å¿…é¡»æ˜¯é«˜é«˜ ä½ä½
 		if (DIR_UP == kxl->flag)
 		{
 			if(kxt->high > kxl->high)
@@ -572,21 +572,21 @@ void ChanlunCore::initBi()
 		fx = kxData.begin();
 		fx = getCKX(2);
 
-		// ±ê³ö±Ê
+		// æ ‡å‡ºç¬”
 		for(i=2; i<kxnum-2; i++, fx++)
 		{			
 			jg++;
-			if(DIR_UP == fx->dir || DIR_DN == fx->dir) jg2++; // °üº¬´¦Àí
+			if(DIR_UP == fx->dir || DIR_DN == fx->dir) jg2++; // åŒ…å«å¤„ç†
 
 
 			if (binum > 0)
 			{
 				if (DIR_UP == fx->flag)
 				{
-					// µ×½Ó¶¥
+					// åº•æ¥é¡¶
 					if (DIR_DN == fxl->bi)
 					{
-						// Èç¹û´æÔÚÈ±¿Ú µ±³ÉÒ»ÌìKÏß jg ºÍJG2 ¶¼+1 (ÉÏÕÇ)
+						// å¦‚æœå­˜åœ¨ç¼ºå£ å½“æˆä¸€å¤©Kçº¿ jg å’ŒJG2 éƒ½+1 (ä¸Šæ¶¨)
 						/*
 						quekou = (pData->m_pData[i].m_fLow - pData->m_pData[i-1].m_fHigh);
 						if(quekou>=biQuekou)
@@ -608,7 +608,7 @@ void ChanlunCore::initBi()
 						}
 						else
 						{
-							// °üº¬´¦Àí È¡¸ßÖĞµÄ¸ßµãµÍÖĞµÄµÍµã
+							// åŒ…å«å¤„ç† å–é«˜ä¸­çš„é«˜ç‚¹ä½ä¸­çš„ä½ç‚¹
 							if(bignum>0)
 							{
 								if(fx->high > fxlg->high)
@@ -629,8 +629,8 @@ void ChanlunCore::initBi()
 					}
 					else if (DIR_UP == fxl->bi)
 					{
-						// ¶¥½Ó¶¥ 
-						// È¡¸ß¶¥
+						// é¡¶æ¥é¡¶ 
+						// å–é«˜é¡¶
 						if (fx->high > fxl->high)
 						{
 							fx->bi = DIR_UP;
@@ -646,11 +646,11 @@ void ChanlunCore::initBi()
 				} // end if (DIR_UP == fx->flag)
 				else if (DIR_DN == fx->flag)
 				{
-					// ¶¥½Óµ×
+					// é¡¶æ¥åº•
 					if (DIR_UP == fxl->bi)
 					{
 						/*
-						// Èç¹û´æÔÚÈ±¿Ú µ±³ÉÒ»ÌìKÏß jg ºÍJG2 ¶¼+1 (ÏÂµø)
+						// å¦‚æœå­˜åœ¨ç¼ºå£ å½“æˆä¸€å¤©Kçº¿ jg å’ŒJG2 éƒ½+1 (ä¸‹è·Œ)
 						quekou = -(pData->m_pData[i].m_fHigh - pData->m_pData[i-1].m_fLow);
 						if(quekou>=biQuekou)
 						{
@@ -671,7 +671,7 @@ void ChanlunCore::initBi()
 						}
 						else
 						{
-							// °üº¬´¦Àí È¡µÍÖĞµÄµÍµã
+							// åŒ…å«å¤„ç† å–ä½ä¸­çš„ä½ç‚¹
 							if(bidnum>0)
 							{
 								if(fx->low < fxld->low)
@@ -692,8 +692,8 @@ void ChanlunCore::initBi()
 					}
 					else if (DIR_DN == fxl->bi)
 					{
-						// µ×½Óµ× 
-						// È¡µÍµ×
+						// åº•æ¥åº• 
+						// å–ä½åº•
 						if (fx->low < fxl->low)
 						{
 							fx->bi = DIR_DN;
@@ -710,7 +710,7 @@ void ChanlunCore::initBi()
 			} // end binum>0
 			else 
 			{
-				// µÚÒ»±Ê
+				// ç¬¬ä¸€ç¬”
 				if (DIR_UP == fx->flag)
 				{
 					fx->bi = DIR_UP;
@@ -732,14 +732,14 @@ void ChanlunCore::initBi()
 					fxld = fx;
 				}
 			}
-		} // end ±ê³ö±Ê
+		} // end æ ‡å‡ºç¬”
 
 
-		// µ±ÏÂ 
+		// å½“ä¸‹ 
 		fxt = kxData.end();
-		fxt--; // ×îºóÒ»¸ùKÏß
-		// ·Ç¶¥ ·Çµ× ÓÃÓÚÅĞ¶Ïµ±ÏÂ ¶¥µ×Î´³ÉÖ®Ç°
-		// ´´ĞÂ¸ß µÍ ±ØÈ»²úÉúĞÂµÄ¸ßµãºÍµÍµã È¥µôÇ°Ò»¸ö¸ßµÍµã ×¢Òâ±ØĞëÊÇ¸ß¸ß µÍµÍ
+		fxt--; // æœ€åä¸€æ ¹Kçº¿
+		// éé¡¶ éåº• ç”¨äºåˆ¤æ–­å½“ä¸‹ é¡¶åº•æœªæˆä¹‹å‰
+		// åˆ›æ–°é«˜ ä½ å¿…ç„¶äº§ç”Ÿæ–°çš„é«˜ç‚¹å’Œä½ç‚¹ å»æ‰å‰ä¸€ä¸ªé«˜ä½ç‚¹ æ³¨æ„å¿…é¡»æ˜¯é«˜é«˜ ä½ä½
 		if (DIR_UP == fxl->bi)
 		{
 			if(fxt->high > fxl->high)
@@ -770,7 +770,7 @@ void ChanlunCore::initTZXL()
 	
 	kx = getCKX(begin);
 	
-	// ²éÕÒËùÓĞÌØÕ÷ĞòÁĞ
+	// æŸ¥æ‰¾æ‰€æœ‰ç‰¹å¾åºåˆ—
 	for (i = begin; i < kxnum - 1; i++, kx++)
 	{
 		if(DIR_UP == kx->bi)
@@ -779,11 +779,11 @@ void ChanlunCore::initTZXL()
 			{
 				if(DIR_DN == kxl->bi)
 				{
-					// µ×½Ó¶¥
+					// åº•æ¥é¡¶
 					binum ++;
 					sbnum ++;
 					cbi tz;
-					tz.dir = DIR_UP; // ÏòÉÏ±Ê
+					tz.dir = DIR_UP; // å‘ä¸Šç¬”
 					tz.high = kx->high;
 					tz.noh = kx->no;
 					tz.low = kxl->low;
@@ -791,7 +791,7 @@ void ChanlunCore::initTZXL()
 					tz.nol = kxl->no;
 					tz.flag = DIR_0;
 					tz.qk = QK_N;
-					// ÏòÉÏ±Ê 
+					// å‘ä¸Šç¬” 
 					sbData.push_back(tz);
 					//	bList.push_back(tz);
 					
@@ -801,7 +801,7 @@ void ChanlunCore::initTZXL()
 			}
 			else
 			{
-				// µÚÒ»±Ê
+				// ç¬¬ä¸€ç¬”
 				kxl = kx;
 				binum++;
 			}
@@ -810,13 +810,13 @@ void ChanlunCore::initTZXL()
 		{
 			if(binum > 0) 
 			{
-				// ¶¥½Óµ×
+				// é¡¶æ¥åº•
 				if(DIR_UP == kxl->bi)
 				{
 					binum ++;
 					xbnum ++;
 					cbi tz;
-					tz.dir = DIR_DN; // ÏòÏÂ±Ê
+					tz.dir = DIR_DN; // å‘ä¸‹ç¬”
 					tz.high = kxl->high;
 					tz.noh = kxl->no;
 					tz.low = kx->low;
@@ -824,7 +824,7 @@ void ChanlunCore::initTZXL()
 					tz.no = binum;
 					tz.flag = DIR_0;
 					tz.qk = QK_N;
-					// ÏòÏÂ±Ê 
+					// å‘ä¸‹ç¬” 
 					xbData.push_back(tz);
 					//	bList.push_back(tz);
 					
@@ -834,12 +834,12 @@ void ChanlunCore::initTZXL()
 			}
 			else
 			{
-				// µÚÒ»±Ê
+				// ç¬¬ä¸€ç¬”
 				kxl = kx;
 				binum++;
 			}
 		}
-	} // END ²éÕÒËùÓĞÌØÕ÷ĞòÁĞ
+	} // END æŸ¥æ‰¾æ‰€æœ‰ç‰¹å¾åºåˆ—
 }
 
 BIIT ChanlunCore::findTZG(int fromNo)
@@ -854,7 +854,7 @@ BIIT ChanlunCore::findTZG(int fromNo)
 		if(bnum >= 3)
 		{
 			BIIT bi, bit, btz2 = xbData.end();
-			cbi tz1, tz2, tz3; // ÌØÕ÷ÔªËØ1 2
+			cbi tz1, tz2, tz3; // ç‰¹å¾å…ƒç´ 1 2
 
 			bool doTZ1 = true, doTZ2 = false, doTZ3 = false;
 			int i=0;
@@ -868,7 +868,7 @@ BIIT ChanlunCore::findTZG(int fromNo)
 				
 				if(doTZ1)
 				{
-					// ÌØÕ÷1
+					// ç‰¹å¾1
 					tz1 = (*bi);
 					doTZ1 = false;
 					doTZ2 = true;
@@ -890,40 +890,40 @@ BIIT ChanlunCore::findTZG(int fromNo)
 						doTZ2 = true;
 					}
 					*/
-					// ok ¿ªÊ¼TZ2
+					// ok å¼€å§‹TZ2
 				}
 				else if(doTZ2)
 				{
-					// ÌØÕ÷2
+					// ç‰¹å¾2
 					if(bi->high > tz1.high && bi->low > tz1.low)
 					{
-						// ÉÏÕÇ
+						// ä¸Šæ¶¨
 						btz2 = bi;
 						tz2 = (*bi);
 						doTZ2 = false;
 						doTZ3 = true;
 						continue;
-						// ok ¿ªÊ¼TZ3
+						// ok å¼€å§‹TZ3
 
 					}
 					else if (bi->high < tz1.high && bi->low < tz1.low)
 					{
-						// ÏÂµø
+						// ä¸‹è·Œ
 						tz1 = (*bi);
-						// ¼ÌĞøTZ2
+						// ç»§ç»­TZ2
 					}
 					else
 					{
-						//TZ1 TZ2 ´¦ÀíÔÚÍ¬Ò»ÌØÕ÷ĞòÁĞÀïµÄ°üº¬¹ØÏµ
+						//TZ1 TZ2 å¤„ç†åœ¨åŒä¸€ç‰¹å¾åºåˆ—é‡Œçš„åŒ…å«å…³ç³»
 						if(tz1.high > bi->high)
 						{
-							// Ç°°üºó
+							// å‰åŒ…å
 							tz1.low = bi->low;
 							tz1.nol = bi->nol;
 						}
 						else
 						{
-							// ºó°üÇ° (±ÊÆÆ»µ²»´¦Àí)
+							// ååŒ…å‰ (ç¬”ç ´åä¸å¤„ç†)
 							btz2 = bi;
 							tz2 = (*bi);
 							doTZ2 = false;
@@ -932,71 +932,71 @@ BIIT ChanlunCore::findTZG(int fromNo)
 
 						}					
 						/*
-						// ´æÔÚ°üº¬¹ØÏµ 2ÖĞÇé¿ö
-						// tz1 È¡¸ßµãµÄ¸ßµã µÍµãµÄ¸ßµã
+						// å­˜åœ¨åŒ…å«å…³ç³» 2ä¸­æƒ…å†µ
+						// tz1 å–é«˜ç‚¹çš„é«˜ç‚¹ ä½ç‚¹çš„é«˜ç‚¹
 						if(tz1.high > bi->high)
 						{
-							// Ç°°üºó
+							// å‰åŒ…å
 							tz1.low = bi->low;
 							tz1.nol = bi->nol;
 						}
 						else
 						{
-							// ºó°üÇ°
+							// ååŒ…å‰
 							tz2 = (*bi);
 							tz2.low = tz1.low;
 							tz1 = tz2;
 						}
-						// ¼ÌĞøTZ2*/
+						// ç»§ç»­TZ2*/
 					}
 
 				}
 				else if(doTZ3)
 				{
-					// ÌØÕ÷3
+					// ç‰¹å¾3
 					if (bi->high < tz2.high && bi->low < tz2.low)
 					{
-						// ÏÂµø ¶¥·Ö³ÉÁ¢
-						//±ê¼Ç tz2
+						// ä¸‹è·Œ é¡¶åˆ†æˆç«‹
+						//æ ‡è®° tz2
 						//btz2->flag = DIR_UP;
-						// Èç¹û´æÔÚÈ±¿Ú
+						// å¦‚æœå­˜åœ¨ç¼ºå£
 						if(tz2.low > tz1.high)
 						{
 							btz2->qk = QK_Y;
 						}
 						
 						return btz2;
-						//break; // ÕÒµ½ÁË½áÊø
+						//break; // æ‰¾åˆ°äº†ç»“æŸ
 						// OK
 					}
 					else if(bi->high > tz2.high && bi->low > tz2.low)
 					{
-						// ÉÏÕÇ
+						// ä¸Šæ¶¨
 						tz1 = tz2;
 						tz2 = (*bi);
-						// ¼ÌĞøTZ3
+						// ç»§ç»­TZ3
 						
 					}
 					else
 					{
-						// ÌØÕ÷3 ºÍ ÌØÕ÷2 ´æÔÚ°üº¬¹ØÏµ
-						// tz1 ²»±ä tz2 °üº¬´¦Àí
+						// ç‰¹å¾3 å’Œ ç‰¹å¾2 å­˜åœ¨åŒ…å«å…³ç³»
+						// tz1 ä¸å˜ tz2 åŒ…å«å¤„ç†
 						if(tz2.high > bi->high)
 						{
-							// Ç°°üºó
+							// å‰åŒ…å
 							tz2.low = bi->low;
 							tz2.nol = bi->nol;
 
 						}
 						else
 						{
-							// ºó°üÇ°
+							// ååŒ…å‰
 							btz2 = bi;
 							tz3 = (*bi);
 							tz3.low = tz2.low;
 							tz2 = tz3;
 						}
-						// ¼ÌĞøTZ3
+						// ç»§ç»­TZ3
 					}
 
 				}
@@ -1017,7 +1017,7 @@ BIIT ChanlunCore::findTZD(int fromNo)
 	if(bnum >= 3)
 	{
 		BIIT bi, btz2=sbData.end(), bit;
-		cbi tz1, tz2, tz3; // ÌØÕ÷ÔªËØ1 2
+		cbi tz1, tz2, tz3; // ç‰¹å¾å…ƒç´ 1 2
 
 		bool doTZ1 = true, doTZ2 = false, doTZ3 = false;
 		int i=0;
@@ -1032,7 +1032,7 @@ BIIT ChanlunCore::findTZD(int fromNo)
 			
 			if(doTZ1)
 			{
-				// ÌØÕ÷1
+				// ç‰¹å¾1
 				tz1 = (*bi);
 				doTZ1 = false;
 				doTZ2 = true;
@@ -1057,39 +1057,39 @@ BIIT ChanlunCore::findTZD(int fromNo)
 					doTZ2 = true;
 				}*/
 
-				// ok ¿ªÊ¼TZ2
+				// ok å¼€å§‹TZ2
 			}
 			else if(doTZ2)
 			{
-				// ÌØÕ÷2
+				// ç‰¹å¾2
 				if (bi->high < tz1.high && bi->low < tz1.low)
 				{
-					// ÏÂµø
+					// ä¸‹è·Œ
 					btz2 = bi;
 					tz2 = (*bi);
 					doTZ2 = false;
 					doTZ3 = true;
 					continue;
-					// ok ¿ªÊ¼TZ3
+					// ok å¼€å§‹TZ3
 				}
 				else if(bi->high > tz1.high && bi->low > tz1.low)
 				{
-					// ÉÏÕÇ
+					// ä¸Šæ¶¨
 					tz1 = (*bi);
-					// ¼ÌĞøTZ2
+					// ç»§ç»­TZ2
 				}
 				else
 				{
-					//TZ1 TZ2 ´¦ÀíÔÚÍ¬Ò»ÌØÕ÷ĞòÁĞÀïµÄ°üº¬¹ØÏµ
+					//TZ1 TZ2 å¤„ç†åœ¨åŒä¸€ç‰¹å¾åºåˆ—é‡Œçš„åŒ…å«å…³ç³»
 					if( tz1.low < bi->low)
 					{
-						// Ç°°üºó
+						// å‰åŒ…å
 						tz1.high = bi->high;
 						tz1.noh = bi->noh;
 					}
 					else
 					{
-						// ºó°üÇ° (±ÊÆÆ»µ²»´¦Àí)
+						// ååŒ…å‰ (ç¬”ç ´åä¸å¤„ç†)
 						btz2 = bi;
 						tz2 = (*bi);
 						doTZ2 = false;
@@ -1099,72 +1099,72 @@ BIIT ChanlunCore::findTZD(int fromNo)
 
 
 					/*
-					// tz2 tz1 ´æÔÚ°üº¬¹ØÏµ 2ÖÖÇé¿ö
-					// tz1 È¡¸ßµãµÄµÍµã µÍµãµÄµÍµã
+					// tz2 tz1 å­˜åœ¨åŒ…å«å…³ç³» 2ç§æƒ…å†µ
+					// tz1 å–é«˜ç‚¹çš„ä½ç‚¹ ä½ç‚¹çš„ä½ç‚¹
 					if( tz1.low < bi->low)
 					{
-						// Ç°°üºó
+						// å‰åŒ…å
 						tz1.high = bi->high;
 						tz1.noh = bi->noh;
 					}
 					else
 					{
-						// ºó°üÇ°
+						// ååŒ…å‰
 						tz2 = (*bi);
 						tz2.high = tz1.high;
 						tz1 = tz2;
 					}
-					// ¼ÌĞøTZ2
+					// ç»§ç»­TZ2
 					*/
 				}
 
 			}
 			else if(doTZ3)
 			{
-				// ÌØÕ÷3
+				// ç‰¹å¾3
 				if(bi->high > tz2.high && bi->low > tz2.low)
 				{
-					// ÉÏÕÇ µ×·Ö³ÉÁ¢
-					//±ê¼Ç tz2
+					// ä¸Šæ¶¨ åº•åˆ†æˆç«‹
+					//æ ‡è®° tz2
 				//	btz2->flag = DIR_DN;
-					// Èç¹û´æÔÚÈ±¿Ú
+					// å¦‚æœå­˜åœ¨ç¼ºå£
 					if(tz2.high > tz1.low)
 					{
 						btz2->qk = QK_Y;
 					}
 					
 					return btz2;
-					//break; // ÕÒµ½ÁË½áÊø
+					//break; // æ‰¾åˆ°äº†ç»“æŸ
 					// OK
 					
 				}
 				else if (bi->high < tz2.high && bi->low < tz2.low)
 				{
-					// ÏÂµø
+					// ä¸‹è·Œ
 					tz1 = tz2;
 					tz2 = (*bi);
-					// ¼ÌĞøTZ3
+					// ç»§ç»­TZ3
 				}
 				else
 				{
-					// ÌØÕ÷3 ºÍ ÌØÕ÷2 ´æÔÚ°üº¬¹ØÏµ
-					// tz1 ²»±ä tz2 °üº¬´¦Àí
+					// ç‰¹å¾3 å’Œ ç‰¹å¾2 å­˜åœ¨åŒ…å«å…³ç³»
+					// tz1 ä¸å˜ tz2 åŒ…å«å¤„ç†
 					if(tz2.low < bi->low)
 					{
-						// Ç°°üºó
+						// å‰åŒ…å
 						tz2.high = bi->high;
 						tz2.noh = bi->noh;
 					}
 					else
 					{
-						// ºó°üÇ°
+						// ååŒ…å‰
 						btz2 = bi;
 
 						tz3 = (*bi);
 						tz3.high = tz2.high;
 						tz2 = tz3;
 					}
-					// ¼ÌĞøTZ3
+					// ç»§ç»­TZ3
 				}
 
 			}
@@ -1185,7 +1185,7 @@ void ChanlunCore::initDuan()
 		int dnum = 0, gnum = 0, next = 0, num = 0;
 		BIIT tzd, tzg, tzl;
 		
-		// ²éÕÒÊ£ÓàµÄ¶¥µ×ÖªµÀ½áÊø
+		// æŸ¥æ‰¾å‰©ä½™çš„é¡¶åº•çŸ¥é“ç»“æŸ
 		bool isOver = false;
 
 		do {
@@ -1209,19 +1209,19 @@ void ChanlunCore::initDuan()
 			{
 
 				
-				// µ× tzd
+				// åº• tzd
 				if(num > 0)
 				{
 					if(DIR_UP == tzl->flag)
 					{
-						// ¶¥½Óµ×
+						// é¡¶æ¥åº•
 						tzd->flag = DIR_DN;
 						tzl = tzd;
 						num++;
 					}
 					else if(DIR_DN == tzl->flag)
 					{
-						// µ×½Óµ× ±£ÁôµÍµÄµ×
+						// åº•æ¥åº• ä¿ç•™ä½çš„åº•
 						if(tzd->low < tzl->low)
 						{
 							tzd->flag = DIR_DN;
@@ -1233,7 +1233,7 @@ void ChanlunCore::initDuan()
 				}
 				else
 				{
-					// µÚÒ»¸ö¶¥ORµ×
+					// ç¬¬ä¸€ä¸ªé¡¶ORåº•
 					tzd->flag = DIR_DN;
 					tzl = tzd;
 					num++;
@@ -1243,19 +1243,19 @@ void ChanlunCore::initDuan()
 			} // end if dnum < gnums
 			else if (dnum > gnum)
 			{
-				// ¶¥ tzg
+				// é¡¶ tzg
 				if(num > 0)
 				{
 					if(DIR_DN == tzl->flag)
 					{
-						// µ×½Ó¶¥
+						// åº•æ¥é¡¶
 						tzg->flag = DIR_UP;
 						tzl = tzg;
 						num++;
 					}
 					else if(DIR_UP == tzl->flag)
 					{
-						// ¶¥½Ó¶¥ È¡¸ßµÄ¶¥
+						// é¡¶æ¥é¡¶ å–é«˜çš„é¡¶
 						if(tzg->high > tzl->high)
 						{
 							tzg->flag = DIR_UP;
@@ -1267,7 +1267,7 @@ void ChanlunCore::initDuan()
 				}
 				else
 				{
-					// µÚÒ»¸ö¶¥ORµ×
+					// ç¬¬ä¸€ä¸ªé¡¶ORåº•
 					tzg->flag = DIR_UP;
 					tzl = tzg;
 					num++;
@@ -1278,7 +1278,7 @@ void ChanlunCore::initDuan()
 			} // end if (dnum > gnum + 1)
 			else
 			{
-				//½áÊø
+				//ç»“æŸ
 				// do nothing
 				isOver = true;
 			}
@@ -1287,8 +1287,8 @@ void ChanlunCore::initDuan()
 		
 		CKXIT kx, kxl;
 		
-		// ±ê¼Ç¶Î
-		// µ×
+		// æ ‡è®°æ®µ
+		// åº•
 		for (tzd = sbData.begin(); tzd != sbData.end(); tzd++)
 		{
 			if(DIR_DN == tzd->flag)
@@ -1298,7 +1298,7 @@ void ChanlunCore::initDuan()
 				kx->duan = DIR_DN;
 			}
 		}
-		// ¶¥
+		// é¡¶
 		for (tzg = xbData.begin(); tzg != xbData.end(); tzg++)
 		{
 			if(DIR_UP == tzg->flag)
@@ -1325,7 +1325,7 @@ void ChanlunCore::initDuanList()
 	
 	kx = getCKX(begin);
 	
-	// ²éÕÒËùÓĞ¶Î
+	// æŸ¥æ‰¾æ‰€æœ‰æ®µ
 	for (i = begin; i < kxnum - 1; i++, kx++)
 	{
 		if(DIR_UP == kx->duan)
@@ -1334,7 +1334,7 @@ void ChanlunCore::initDuanList()
 			{
 				if(DIR_DN == kxl->duan)
 				{
-					// µ×½Ó¶¥
+					// åº•æ¥é¡¶
 					num ++;
 					cduan d;
 					d.flag = DIR_UP;
@@ -1350,7 +1350,7 @@ void ChanlunCore::initDuanList()
 			}
 			else
 			{
-				// µÚÒ»±Ê
+				// ç¬¬ä¸€ç¬”
 				num++;
 				kxl = kx;				
 			}
@@ -1359,7 +1359,7 @@ void ChanlunCore::initDuanList()
 		{
 			if(num > 0) 
 			{
-				// ¶¥½Óµ×
+				// é¡¶æ¥åº•
 				if(DIR_UP == kxl->duan)
 				{
 					num ++;
@@ -1377,12 +1377,12 @@ void ChanlunCore::initDuanList()
 			}
 			else
 			{
-				// µÚÒ»±Ê
+				// ç¬¬ä¸€ç¬”
 				num++;
 				kxl = kx;
 			}
 		}
-	} // END ²éÕÒËùÓĞ¶Î
+	} // END æŸ¥æ‰¾æ‰€æœ‰æ®µ
 }
 
 void ChanlunCore::findHuiTiaoZS(int duanno, int begin, int end, int high, int low)
@@ -1407,7 +1407,7 @@ void ChanlunCore::findHuiTiaoZS(int duanno, int begin, int end, int high, int lo
 							dd = znl->low < zn->low ? znl->low : zn->low;
 							if(high > gg && low < dd)
 							{
-								// ZNÖØµş ĞÂÖĞÊà
+								// ZNé‡å  æ–°ä¸­æ¢
 								czhongshu zs;
 								zs.flag = DIR_UP;
 								zs.duanno = duanno;
@@ -1420,7 +1420,7 @@ void ChanlunCore::findHuiTiaoZS(int duanno, int begin, int end, int high, int lo
 								zs.dd = dd;
 								zs.zz = zs.zd + (zs.zg-zs.zd)/2;
 
-								// ÖĞÊà±ØĞëÈ«²¿ÔÚ¶ÎÄÚ
+								// ä¸­æ¢å¿…é¡»å…¨éƒ¨åœ¨æ®µå†…
 								zsData.push_back(zs);
 								findZSNew = false;
 							}
@@ -1437,12 +1437,12 @@ void ChanlunCore::findHuiTiaoZS(int duanno, int begin, int end, int high, int lo
 							
 							if(zn->low > zsit->zg || zn->high < zsit->zd)
 							{
-								// Àë¿ªÖĞÊà
+								// ç¦»å¼€ä¸­æ¢
 								findZSNew = true;
 							}
 							else
 							{
-								// ÖĞÊàÑÓÉì
+								// ä¸­æ¢å»¶ä¼¸
 								zsit->jsno = zn->nol;
 								zsit->znnum ++;
 								if(zn->high > zsit->gg)
@@ -1458,13 +1458,13 @@ void ChanlunCore::findHuiTiaoZS(int duanno, int begin, int end, int high, int lo
 					}
 					else
 					{
-						// Àë¿ªÖĞÊà
+						// ç¦»å¼€ä¸­æ¢
 						findZSNew = true;
 					}
 				}// end if(num > 0)
 				else
 				{
-					// Èç¹ûµÚÒ»±ÊÆÆ»µÁËÏòÉÏ¶Î²»´¦Àí
+					// å¦‚æœç¬¬ä¸€ç¬”ç ´åäº†å‘ä¸Šæ®µä¸å¤„ç†
 					/*
 					if(zn->high > low)
 					{
@@ -1505,7 +1505,7 @@ void ChanlunCore::findFanTanZS(int duanno, int begin, int end, int high, int low
 							dd = znl->low < zn->low ? znl->low : zn->low;
 							if(high > gg && low < dd)
 							{
-								// ZNÖØµş ĞÂÖĞÊà
+								// ZNé‡å  æ–°ä¸­æ¢
 								czhongshu zs;
 								zs.flag = DIR_DN;
 								zs.duanno = duanno;
@@ -1518,7 +1518,7 @@ void ChanlunCore::findFanTanZS(int duanno, int begin, int end, int high, int low
 								zs.dd = dd;
 								zs.zz = zs.zd + (zs.zg-zs.zd)/2;
 
-								// ÖĞÊà±ØĞëÈ«²¿ÔÚ¶ÎÄÚ
+								// ä¸­æ¢å¿…é¡»å…¨éƒ¨åœ¨æ®µå†…
 								zsData.push_back(zs);
 								findZSNew = false;
 							}
@@ -1534,12 +1534,12 @@ void ChanlunCore::findFanTanZS(int duanno, int begin, int end, int high, int low
 							
 							if(zn->low > zsit->zg || zn->high < zsit->zd)
 							{
-								// Àë¿ªÖĞÊà
+								// ç¦»å¼€ä¸­æ¢
 								findZSNew = true;
 							}
 							else
 							{
-								// ÖĞÊàÑÓÉì
+								// ä¸­æ¢å»¶ä¼¸
 								findZSNew = false;
 								zsit->jsno = zn->noh;
 								zsit->znnum ++;
@@ -1556,13 +1556,13 @@ void ChanlunCore::findFanTanZS(int duanno, int begin, int end, int high, int low
 					}
 					else
 					{
-						// Àë¿ªÖĞÊà
+						// ç¦»å¼€ä¸­æ¢
 						findZSNew = true;
 					}
 				}
 				else
 				{
-					// Èç¹ûµÚÒ»±ÊÆÆ»µÁËÏòÏÂ¶Î²»´¦Àí
+					// å¦‚æœç¬¬ä¸€ç¬”ç ´åäº†å‘ä¸‹æ®µä¸å¤„ç†
 					/*
 					if(zn->low < low)
 					{
@@ -1596,13 +1596,13 @@ void ChanlunCore::initZhongshu()
 			i++;
 			if(DIR_UP == dit->flag)
 			{
-				// ÏòÉÏ¶Î
+				// å‘ä¸Šæ®µ
 				findHuiTiaoZS(i, dit->nol, dit->noh, dit->high, dit->low);
 				
 			}
 			else if(DIR_DN == dit->flag)
 			{
-				// ÏòÏÂ¶Î
+				// å‘ä¸‹æ®µ
 				findFanTanZS(i, dit->noh, dit->nol, dit->high, dit->low);
 			}
 			

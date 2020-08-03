@@ -1,8 +1,8 @@
-/************************************************************************/
+ï»¿/************************************************************************/
 /* 
-²øÂÛºËĞÄÄ£¿éÊµÏÖ
-µ¥ÀıÄ£Ê½   
-ËùÓĞChanlun½Ó¿ÚÖĞ²øÂÛºËĞÄº¯ÊıÔÚ´ËÊµÏÖ                                                                 
+ç¼ è®ºæ ¸å¿ƒæ¨¡å—å®ç°
+å•ä¾‹æ¨¡å¼   
+æ‰€æœ‰Chanlunæ¥å£ä¸­ç¼ è®ºæ ¸å¿ƒå‡½æ•°åœ¨æ­¤å®ç°                                                                 
  */
 /************************************************************************/
 #ifndef __CHANLUNCORE_H_INCLUDE
@@ -13,63 +13,63 @@
 	
 using namespace std;
 
-//¶¨Òå»ù±¾Êı¾İ
-// ²øÂÛKÏß½á¹¹ ´¦Àí¹ı°üº¬¹ØÏµµÄKÏß
+//å®šä¹‰åŸºæœ¬æ•°æ®
+// ç¼ è®ºKçº¿ç»“æ„ å¤„ç†è¿‡åŒ…å«å…³ç³»çš„Kçº¿
 typedef struct chankx
 {
-	int no;				// KÏßĞòºÅ ´Ó1¿ªÊ¼ÊÇ
-	float rhigh;		// ¸ßÖµ
-	float rlow;			// µÍÖµ
-	float high;		//°üº¬´¦ÀíºóµÄ¸ßÖµ
-	float low;		//°üº¬´¦ÀíºóµÄµÍÖµ
-	int	flag;			//1¶¥ -1µ× 0 ·Ç¶¥µ×
-	float fxqj;		// ·ÖĞÍÇø¼ä Èç¹ûÎª¶¥µ× ¼ÇÂ¼Çø¼ä±ß½ç
-	int dir;            //KÏß·½Ïò 1ÉÏ -1ÏÂ 2 ÉÏ°üº¬ -2 ÏÂ°üº¬
-	int bi;				//±Ê 1ÉÏ -1ÏÂ 2 ÉÏ°üº¬ -2 ÏÂ°üº¬
-	int duan;			//¶Î 1ÉÏ -1ÏÂ 2 ÉÏ°üº¬ -2 ÏÂ°üº¬
+	int no;				// Kçº¿åºå· ä»1å¼€å§‹æ˜¯
+	float rhigh;		// é«˜å€¼
+	float rlow;			// ä½å€¼
+	float high;		//åŒ…å«å¤„ç†åçš„é«˜å€¼
+	float low;		//åŒ…å«å¤„ç†åçš„ä½å€¼
+	int	flag;			//1é¡¶ -1åº• 0 éé¡¶åº•
+	float fxqj;		// åˆ†å‹åŒºé—´ å¦‚æœä¸ºé¡¶åº• è®°å½•åŒºé—´è¾¹ç•Œ
+	int dir;            //Kçº¿æ–¹å‘ 1ä¸Š -1ä¸‹ 2 ä¸ŠåŒ…å« -2 ä¸‹åŒ…å«
+	int bi;				//ç¬” 1ä¸Š -1ä¸‹ 2 ä¸ŠåŒ…å« -2 ä¸‹åŒ…å«
+	int duan;			//æ®µ 1ä¸Š -1ä¸‹ 2 ä¸ŠåŒ…å« -2 ä¸‹åŒ…å«
 } ckx;
 
-// ±Ê (ÌØÕ÷ĞòÁĞ)
+// ç¬” (ç‰¹å¾åºåˆ—)
 typedef struct chanbi
 {
-	int no; // ĞòºÅ
-	int noh; // ¸ßµãKÏß±àºÅ
-	int nol;  // µÍµãKÏß±àºÅ
-	float high; // ¸ßµã
-	float low; // µÍµã
-	int dir; // ·½Ïò ·½Ïò 1ÉÏ -1ÏÂ 2 ÉÏ°üº¬ -2 ÏÂ°üº¬
-	int flag; // 1¶¥ -1µ×
-	int qk; // ÌØÕ÷1 2 Ö®¼äÊÇ·ñ´æÔÚÈ±¿Ú 
+	int no; // åºå·
+	int noh; // é«˜ç‚¹Kçº¿ç¼–å·
+	int nol;  // ä½ç‚¹Kçº¿ç¼–å·
+	float high; // é«˜ç‚¹
+	float low; // ä½ç‚¹
+	int dir; // æ–¹å‘ æ–¹å‘ 1ä¸Š -1ä¸‹ 2 ä¸ŠåŒ…å« -2 ä¸‹åŒ…å«
+	int flag; // 1é¡¶ -1åº•
+	int qk; // ç‰¹å¾1 2 ä¹‹é—´æ˜¯å¦å­˜åœ¨ç¼ºå£ 
 } cbi;
 
-// ¶Î
+// æ®µ
 typedef struct chanduan
 {
-	int no; // ĞòºÅ
-	int noh; // ¸ßµãKÏß±àºÅ
-	int nol;  // µÍµãKÏß±àºÅ
-	float high; // ¸ßµã
-	float low; // µÍµã
-	int flag; //  1¶¥ -1µ×
-	int binum; // °üº¬¼¸±Ê
+	int no; // åºå·
+	int noh; // é«˜ç‚¹Kçº¿ç¼–å·
+	int nol;  // ä½ç‚¹Kçº¿ç¼–å·
+	float high; // é«˜ç‚¹
+	float low; // ä½ç‚¹
+	int flag; //  1é¡¶ -1åº•
+	int binum; // åŒ…å«å‡ ç¬”
 } cduan;
 
-// ×ßÊÆÖĞÊà
+// èµ°åŠ¿ä¸­æ¢
 typedef struct chanzhongshu
 {
-	int no; // ĞòºÅ
-	int duanno; // ¶ÎĞòºÅ
-	int flag; // ×ßÊÆ·½Ïò 1ÉÏ -1ÏÂ
-	int ksno; // zgËùÔÚKÏßNO (ÓĞzg±ØÓĞzd)
-	int jsno; // zdËùÔÚKÏßNO
-	int znnum; // °üº¬znÊı
-	float zg; // ZG=min(g1¡¢g2)
-	float zd; // ZD=max(d1¡¢d2)
+	int no; // åºå·
+	int duanno; // æ®µåºå·
+	int flag; // èµ°åŠ¿æ–¹å‘ 1ä¸Š -1ä¸‹
+	int ksno; // zgæ‰€åœ¨Kçº¿NO (æœ‰zgå¿…æœ‰zd)
+	int jsno; // zdæ‰€åœ¨Kçº¿NO
+	int znnum; // åŒ…å«znæ•°
+	float zg; // ZG=min(g1ã€g2)
+	float zd; // ZD=max(d1ã€d2)
 	float gg; // GG=max(gn);
 	float dd; // dd=min(dn);
-	float zz; // Õğµ´ÖĞÖá(¼àÊÓÆ÷)
+	float zz; // éœ‡è¡ä¸­è½´(ç›‘è§†å™¨)
 } czhongshu;
-//¶¨Òå»ù±¾Êı¾İ END
+//å®šä¹‰åŸºæœ¬æ•°æ® END
 
 typedef list<ckx> KXDATA;
 typedef list<cbi> BIDATA;
@@ -86,43 +86,43 @@ typedef list<cbi>::const_iterator C_BIIT;
 typedef list<cduan>::const_iterator C_DUANIT;
 typedef list<czhongshu>::const_iterator C_ZSIT;
 
-// ²øÂÛºËĞÄÊµÏÖ
+// ç¼ è®ºæ ¸å¿ƒå®ç°
 class ChanlunCore
 {
 private:
-	ChanlunCore(); // ¹¹Ôìº¯Êı
-	~ChanlunCore(); // Îö¹¹º¯Êı
+	ChanlunCore(); // æ„é€ å‡½æ•°
+	~ChanlunCore(); // ææ„å‡½æ•°
 
 	static ChanlunCore* instance;
 
 
-	KXDATA kxData; // ¸ù¾İ²øÂÛ´¦Àí¹ıµÄKÏß
-	BIDATA xbData; // ÏòÏÂ±Ê £¨ÏòÉÏ±Ê¿ªÊ¼µÄ¶ÎµÄÌØÕ÷ĞòÁĞ£©
-	BIDATA sbData; // ÏòÉÏ±Ê £¨ÏòÏÂ±Ê¿ªÊ¼µÄ¶ÎµÄÌØÕ÷ĞòÁĞ£©
-	DUANDATA dData; // ¶Î
-	ZSDATA zsData; // ÖĞÊà
+	KXDATA kxData; // æ ¹æ®ç¼ è®ºå¤„ç†è¿‡çš„Kçº¿
+	BIDATA xbData; // å‘ä¸‹ç¬” ï¼ˆå‘ä¸Šç¬”å¼€å§‹çš„æ®µçš„ç‰¹å¾åºåˆ—ï¼‰
+	BIDATA sbData; // å‘ä¸Šç¬” ï¼ˆå‘ä¸‹ç¬”å¼€å§‹çš„æ®µçš„ç‰¹å¾åºåˆ—ï¼‰
+	DUANDATA dData; // æ®µ
+	ZSDATA zsData; // ä¸­æ¢
 	
 	float biQuekou;
 	int firstDuanDir;
 
-	void initBiQK(CALCINFO* pData); // ³õÊ¼»¯È±¿Ú
-	void initTZXL(); // ³õÊ¼»¯ÌØÕ÷·ÖĞÍ
-	void initDuanList(); //³õÊ¼»¯¶Î
+	void initBiQK(CALCINFO* pData); // åˆå§‹åŒ–ç¼ºå£
+	void initTZXL(); // åˆå§‹åŒ–ç‰¹å¾åˆ†å‹
+	void initDuanList(); //åˆå§‹åŒ–æ®µ
 
-	BIIT findTZG(int fromNo); // ²éÕÒÌØÕ÷ĞòÁĞµÄ¶¥·ÖĞÍ
-	BIIT findTZD(int fromNo); // ²éÕÒÌØÕ÷ĞòÁĞµÄµ×·ÖĞÍ
+	BIIT findTZG(int fromNo); // æŸ¥æ‰¾ç‰¹å¾åºåˆ—çš„é¡¶åˆ†å‹
+	BIIT findTZD(int fromNo); // æŸ¥æ‰¾ç‰¹å¾åºåˆ—çš„åº•åˆ†å‹
 	
-	void findFanTanZS(int duanno, int begin, int end, int high, int low); // ²éÕÒÏÂµø¶ÎÖĞÊà
-	void findHuiTiaoZS(int duanno, int begin, int end, int high, int low); // ²éÕÒÉÏÉı¶ÎÖĞÊà
+	void findFanTanZS(int duanno, int begin, int end, int high, int low); // æŸ¥æ‰¾ä¸‹è·Œæ®µä¸­æ¢
+	void findHuiTiaoZS(int duanno, int begin, int end, int high, int low); // æŸ¥æ‰¾ä¸Šå‡æ®µä¸­æ¢
 
 public:
-	static ChanlunCore* GetInstance(); //»ñÈ¡ Î¨Ò»ÊµÀı
+	static ChanlunCore* GetInstance(); //è·å– å”¯ä¸€å®ä¾‹
 	
-	void initKx(CALCINFO* pData); // ³õÊ¼»¯²øÂÛKÏß
-	void initFX(); // ³õÊ¼»¯·ÖĞÍ
-	void initBi();	// ³õÊ¼»¯±Ê
-	void initDuan(); // ³õÊ¼»¯¶Î
-	void initZhongshu(); // ³õÊ¼»¯ÖĞÊà
+	void initKx(CALCINFO* pData); // åˆå§‹åŒ–ç¼ è®ºKçº¿
+	void initFX(); // åˆå§‹åŒ–åˆ†å‹
+	void initBi();	// åˆå§‹åŒ–ç¬”
+	void initDuan(); // åˆå§‹åŒ–æ®µ
+	void initZhongshu(); // åˆå§‹åŒ–ä¸­æ¢
 
 	CKXIT getCKX(int num);
 
@@ -133,16 +133,16 @@ public:
 	DUANDATA getDuanData();
 	ZSDATA getZsData();
 
-	// ×Ô¶¨Òå³£Á¿
-	// ·½Ïò 1ÏòÉÏ -1ÏòÏÂ
+	// è‡ªå®šä¹‰å¸¸é‡
+	// æ–¹å‘ 1å‘ä¸Š -1å‘ä¸‹
 	static const int DIR_0;
 	static const int DIR_UP;
 	static const int DIR_DN;
 	static const int DIR_SBH;
 	static const int DIR_XBH;
 	
-	static const int QK_N; // ²»´æÔÚÈ±¿Ú
-	static const int QK_Y; // ´æÔÚÈ±¿Ú
+	static const int QK_N; // ä¸å­˜åœ¨ç¼ºå£
+	static const int QK_Y; // å­˜åœ¨ç¼ºå£
 };
 
 #endif // __CHANLUNTOOLS_H_INCLUDE

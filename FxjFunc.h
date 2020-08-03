@@ -1,15 +1,15 @@
-#ifndef __FXJFUNC_H_INCLUDE
+ï»¿#ifndef __FXJFUNC_H_INCLUDE
 #define __FXJFUNC_H_INCLUDE
 
 /*
 ///////////////////////////////////////////////////////////////////////////
-·ÖÎö¼ÒÀ©Õ¹º¯Êı¹æ·¶V3.10
-1.±¾¹æ·¶ÊÊÓÃÓÚ·ÖÎö¼Ò3.10±ê×¼°æºÍ×¨Òµ°æ¹«Ê½ÏµÍ³.
-2.À©Õ¹º¯ÊıÓÃÓÚÊµÏÖÏµÍ³º¯Êı²»ÄÜÊµÏÖµÄÌØÊâËã·¨.
-3.À©Õ¹º¯ÊıÓÃwindows 32Î»¶¯Ì¬Á¬½Ó¿âÊµÏÖ,½¨ÒéÊ¹ÓÃMicrosoft Visual C++±à³Ì.
-4.µ÷ÓÃÊ±ÔÚ¹«Ê½±à¼­Æ÷ÖĞĞ´"¶¯Ì¬¿âÃû³Æ@º¯ÊıÃû³Æ"(²ÎÊı±í)¼´¿É,ÀıÈçÏÂÃæº¯Êı¿ÉÒÔĞ´Îª"FXJFUNC@MYCMALOSE"(5)
-5.¶¯Ì¬Á¬½Ó¿âÃû³ÆºÍº¯ÊıÃû³Æ¿ÉÒÔ×Ô¼º¶¨Òå.
-6.Ê¹ÓÃÊ±¿ÉÒÔ½«¶¯Ì¬¿â¿½±´µ½·ÖÎö¼ÒÄ¿Â¼ÏÂÊ¹ÓÃ.
+åˆ†æå®¶æ‰©å±•å‡½æ•°è§„èŒƒV3.10
+1.æœ¬è§„èŒƒé€‚ç”¨äºåˆ†æå®¶3.10æ ‡å‡†ç‰ˆå’Œä¸“ä¸šç‰ˆå…¬å¼ç³»ç»Ÿ.
+2.æ‰©å±•å‡½æ•°ç”¨äºå®ç°ç³»ç»Ÿå‡½æ•°ä¸èƒ½å®ç°çš„ç‰¹æ®Šç®—æ³•.
+3.æ‰©å±•å‡½æ•°ç”¨windows 32ä½åŠ¨æ€è¿æ¥åº“å®ç°,å»ºè®®ä½¿ç”¨Microsoft Visual C++ç¼–ç¨‹.
+4.è°ƒç”¨æ—¶åœ¨å…¬å¼ç¼–è¾‘å™¨ä¸­å†™"åŠ¨æ€åº“åç§°@å‡½æ•°åç§°"(å‚æ•°è¡¨)å³å¯,ä¾‹å¦‚ä¸‹é¢å‡½æ•°å¯ä»¥å†™ä¸º"FXJFUNC@MYCMALOSE"(5)
+5.åŠ¨æ€è¿æ¥åº“åç§°å’Œå‡½æ•°åç§°å¯ä»¥è‡ªå·±å®šä¹‰.
+6.ä½¿ç”¨æ—¶å¯ä»¥å°†åŠ¨æ€åº“æ‹·è´åˆ°åˆ†æå®¶ç›®å½•ä¸‹ä½¿ç”¨.
 */
 
 #ifdef __cplusplus
@@ -18,156 +18,156 @@ extern "C"
 #endif //__cplusplus
 
 ///////////////////////////////////////////////////////////////////////////
-//·ÖÎöÖÜÆÚ
+//åˆ†æå‘¨æœŸ
 enum DATA_TYPE
 {
-	TICK_DATA=2,				//·Ö±Ê³É½»
-	MIN1_DATA,					//1·ÖÖÓÏß
-	MIN5_DATA,					//5·ÖÖÓÏß					
-	MIN15_DATA,					//15·ÖÖÓÏß
-	MIN30_DATA,					//30·ÖÖÓÏß
-	MIN60_DATA,					//60·ÖÖÓÏß
-	DAY_DATA,					//ÈÕÏß
-	WEEK_DATA,					//ÖÜÏß
-	MONTH_DATA,					//ÔÂÏß
-	MULTI_DATA					//¶àÈÕÏß
+	TICK_DATA=2,				//åˆ†ç¬”æˆäº¤
+	MIN1_DATA,					//1åˆ†é’Ÿçº¿
+	MIN5_DATA,					//5åˆ†é’Ÿçº¿					
+	MIN15_DATA,					//15åˆ†é’Ÿçº¿
+	MIN30_DATA,					//30åˆ†é’Ÿçº¿
+	MIN60_DATA,					//60åˆ†é’Ÿçº¿
+	DAY_DATA,					//æ—¥çº¿
+	WEEK_DATA,					//å‘¨çº¿
+	MONTH_DATA,					//æœˆçº¿
+	MULTI_DATA					//å¤šæ—¥çº¿
 };
 
 ///////////////////////////////////////////////////////////////////////////
-//»ù±¾Êı¾İ
+//åŸºæœ¬æ•°æ®
 
 typedef struct tagSTKDATA	
 {
-	time_t	m_time;			//Ê±¼ä,UCT
-	float	m_fOpen;		//¿ªÅÌ
-	float	m_fHigh;		//×î¸ß
-	float	m_fLow;			//×îµÍ
-	float	m_fClose;		//ÊÕÅÌ
-	float	m_fVolume;		//³É½»Á¿
-	float	m_fAmount;		//³É½»¶î
-	WORD	m_wAdvance;		//ÉÏÕÇ¼ÒÊı(½ö´óÅÌÓĞĞ§)
-	WORD	m_wDecline;		//ÏÂµø¼ÒÊı(½ö´óÅÌÓĞĞ§)
+	time_t	m_time;			//æ—¶é—´,UCT
+	float	m_fOpen;		//å¼€ç›˜
+	float	m_fHigh;		//æœ€é«˜
+	float	m_fLow;			//æœ€ä½
+	float	m_fClose;		//æ”¶ç›˜
+	float	m_fVolume;		//æˆäº¤é‡
+	float	m_fAmount;		//æˆäº¤é¢
+	WORD	m_wAdvance;		//ä¸Šæ¶¨å®¶æ•°(ä»…å¤§ç›˜æœ‰æ•ˆ)
+	WORD	m_wDecline;		//ä¸‹è·Œå®¶æ•°(ä»…å¤§ç›˜æœ‰æ•ˆ)
 } STKDATA;
 
 
 ////////////////////////////////////////////////////////////////////////////
-//À©Õ¹Êı¾İ,ÓÃÓÚÃèÊö·Ö±Ê³É½»Êı¾İµÄÂòÂôÅÌ
+//æ‰©å±•æ•°æ®,ç”¨äºæè¿°åˆ†ç¬”æˆäº¤æ•°æ®çš„ä¹°å–ç›˜
 
 typedef union tagSTKDATAEx
 {
 	struct
 	{
-		float m_fBuyPrice[3];		//Âò1--Âò3¼Û
-		float m_fBuyVol[3];			//Âò1--Âò3Á¿
-		float m_fSellPrice[3];		//Âô1--Âô3¼Û	
-		float m_fSellVol[3];		//Âô1--Âô3Á¿
+		float m_fBuyPrice[3];		//ä¹°1--ä¹°3ä»·
+		float m_fBuyVol[3];			//ä¹°1--ä¹°3é‡
+		float m_fSellPrice[3];		//å–1--å–3ä»·	
+		float m_fSellVol[3];		//å–1--å–3é‡
 	};
-	float m_fDataEx[12];			//±£Áô
+	float m_fDataEx[12];			//ä¿ç•™
 } STKDATAEx;
 
 /////////////////////////////////////////////////////////////////////////////
-/*²ÆÎñÊı¾İË³Ğò(m_pfFinDataÄÚÈİ)
+/*è´¢åŠ¡æ•°æ®é¡ºåº(m_pfFinDataå†…å®¹)
 
-	ĞòºÅ	ÄÚÈİ
+	åºå·	å†…å®¹
 
-	0	×Ü¹É±¾(Íò¹É),
-	1	¹ú¼Ò¹É,
-	2	·¢ÆğÈË·¨ÈË¹É,
-	3	·¨ÈË¹É,
-	4	B¹É,
-	5	H¹É,
-	6	Á÷Í¨A¹É,
-	7	Ö°¹¤¹É,
-	8	A2×ªÅä¹É,
-	9	×Ü×Ê²ú(Ç§Ôª),
-	10	Á÷¶¯×Ê²ú,
-	11	¹Ì¶¨×Ê²ú,
-	12	ÎŞĞÎ×Ê²ú,
-	13	³¤ÆÚÍ¶×Ê,
-	14	Á÷¶¯¸ºÕ®,
-	15	³¤ÆÚ¸ºÕ®,
-	16	×Ê±¾¹«»ı½ğ,
-	17	Ã¿¹É¹«»ı½ğ,
-	18	¹É¶«È¨Òæ,
-	19	Ö÷ÓªÊÕÈë,
-	20	Ö÷ÓªÀûÈó,
-	21	ÆäËûÀûÈó,
-	22	ÓªÒµÀûÈó,
-	23	Í¶×ÊÊÕÒæ,
-	24	²¹ÌùÊÕÈë,
-	25	ÓªÒµÍâÊÕÖ§,
-	26	ÉÏÄêËğÒæµ÷Õû,
-	27	ÀûÈó×Ü¶î,
-	28	Ë°ºóÀûÈó,
-	29	¾»ÀûÈó,
-	30	Î´·ÖÅäÀûÈó,
-	31	Ã¿¹ÉÎ´·ÖÅä,
-	32	Ã¿¹ÉÊÕÒæ,
-	33	Ã¿¹É¾»×Ê²ú,
-	34	µ÷ÕûÃ¿¹É¾»×Ê,
-	35	¹É¶«È¨Òæ±È,
-	36	¾»×ÊÊÕÒæÂÊ
+	0	æ€»è‚¡æœ¬(ä¸‡è‚¡),
+	1	å›½å®¶è‚¡,
+	2	å‘èµ·äººæ³•äººè‚¡,
+	3	æ³•äººè‚¡,
+	4	Bè‚¡,
+	5	Hè‚¡,
+	6	æµé€šAè‚¡,
+	7	èŒå·¥è‚¡,
+	8	A2è½¬é…è‚¡,
+	9	æ€»èµ„äº§(åƒå…ƒ),
+	10	æµåŠ¨èµ„äº§,
+	11	å›ºå®šèµ„äº§,
+	12	æ— å½¢èµ„äº§,
+	13	é•¿æœŸæŠ•èµ„,
+	14	æµåŠ¨è´Ÿå€º,
+	15	é•¿æœŸè´Ÿå€º,
+	16	èµ„æœ¬å…¬ç§¯é‡‘,
+	17	æ¯è‚¡å…¬ç§¯é‡‘,
+	18	è‚¡ä¸œæƒç›Š,
+	19	ä¸»è¥æ”¶å…¥,
+	20	ä¸»è¥åˆ©æ¶¦,
+	21	å…¶ä»–åˆ©æ¶¦,
+	22	è¥ä¸šåˆ©æ¶¦,
+	23	æŠ•èµ„æ”¶ç›Š,
+	24	è¡¥è´´æ”¶å…¥,
+	25	è¥ä¸šå¤–æ”¶æ”¯,
+	26	ä¸Šå¹´æŸç›Šè°ƒæ•´,
+	27	åˆ©æ¶¦æ€»é¢,
+	28	ç¨ååˆ©æ¶¦,
+	29	å‡€åˆ©æ¶¦,
+	30	æœªåˆ†é…åˆ©æ¶¦,
+	31	æ¯è‚¡æœªåˆ†é…,
+	32	æ¯è‚¡æ”¶ç›Š,
+	33	æ¯è‚¡å‡€èµ„äº§,
+	34	è°ƒæ•´æ¯è‚¡å‡€èµ„,
+	35	è‚¡ä¸œæƒç›Šæ¯”,
+	36	å‡€èµ„æ”¶ç›Šç‡
 */
 
 /////////////////////////////////////////////////////////////////////////////
-//º¯ÊıÊı¾İ½á¹¹
+//å‡½æ•°æ•°æ®ç»“æ„
 
 typedef struct tagCALCINFO
 {
-	const DWORD			m_dwSize;				//½á¹¹´óĞ¡
-	const DWORD			m_dwVersion;			//µ÷ÓÃÈí¼ş°æ±¾(V2.10 : 0x210)
-	const DWORD			m_dwSerial;				//µ÷ÓÃÈí¼şĞòÁĞºÅ
-	const char*			m_strStkLabel;			//¹ÉÆ±´úÂë
-	const BOOL			m_bIndex;				//´óÅÌ
+	const DWORD			m_dwSize;				//ç»“æ„å¤§å°
+	const DWORD			m_dwVersion;			//è°ƒç”¨è½¯ä»¶ç‰ˆæœ¬(V2.10 : 0x210)
+	const DWORD			m_dwSerial;				//è°ƒç”¨è½¯ä»¶åºåˆ—å·
+	const char*			m_strStkLabel;			//è‚¡ç¥¨ä»£ç 
+	const BOOL			m_bIndex;				//å¤§ç›˜
 
-	const int			m_nNumData;				//Êı¾İÊıÁ¿(pData,pDataEx,pResultBufÊı¾İÊıÁ¿)
-	const STKDATA*		m_pData;				//³£¹æÊı¾İ,×¢Òâ:µ±m_nNumData==0Ê±¿ÉÄÜÎª NULL
-	const STKDATAEx*	m_pDataEx;				//À©Õ¹Êı¾İ,·Ö±Ê³É½»ÂòÂôÅÌ,×¢Òâ:¿ÉÄÜÎª NULL
+	const int			m_nNumData;				//æ•°æ®æ•°é‡(pData,pDataEx,pResultBufæ•°æ®æ•°é‡)
+	const STKDATA*		m_pData;				//å¸¸è§„æ•°æ®,æ³¨æ„:å½“m_nNumData==0æ—¶å¯èƒ½ä¸º NULL
+	const STKDATAEx*	m_pDataEx;				//æ‰©å±•æ•°æ®,åˆ†ç¬”æˆäº¤ä¹°å–ç›˜,æ³¨æ„:å¯èƒ½ä¸º NULL
 
-	const int			m_nParam1Start;			//²ÎÊı1ÓĞĞ§Î»ÖÃ
-	const float*		m_pfParam1;				//µ÷ÓÃ²ÎÊı1	
-	const float*		m_pfParam2;				//µ÷ÓÃ²ÎÊı2
-	const float*		m_pfParam3;				//µ÷ÓÃ²ÎÊı3
-	const float*		m_pfParam4;				//µ÷ÓÃ²ÎÊı3
+	const int			m_nParam1Start;			//å‚æ•°1æœ‰æ•ˆä½ç½®
+	const float*		m_pfParam1;				//è°ƒç”¨å‚æ•°1	
+	const float*		m_pfParam2;				//è°ƒç”¨å‚æ•°2
+	const float*		m_pfParam3;				//è°ƒç”¨å‚æ•°3
+	const float*		m_pfParam4;				//è°ƒç”¨å‚æ•°3
 
-	float*				m_pResultBuf;			//½á¹û»º³åÇø
-	const DATA_TYPE		m_dataType;				//Êı¾İÀàĞÍ
-	const float*		m_pfFinData;			//²ÆÎñÊı¾İ
+	float*				m_pResultBuf;			//ç»“æœç¼“å†²åŒº
+	const DATA_TYPE		m_dataType;				//æ•°æ®ç±»å‹
+	const float*		m_pfFinData;			//è´¢åŠ¡æ•°æ®
 } CALCINFO;
 
 /* 
-×¢: 
-	1.º¯Êıµ÷ÓÃ²ÎÊıÓÉm_pfParam1--m_pfParam4´øÈë,ÈôÎªNULLÔò±íÊ¾¸Ã²ÎÊıÎŞĞ§.
-	2.µ±Ò»¸ö²ÎÊıÎŞĞ§Ê±,ÔòÆäºóµÄËùÓĞ²ÎÊı¾ùÎŞĞ§.
-		Èç:m_pfParam2ÎªNULL,Ôòm_pfParam3,m_pfParam4Ò»¶¨ÎªNULL.
-	3.²ÎÊı1¿ÉÒÔÊÇ³£Êı²ÎÊı»òĞòÁĞÊı²ÎÊı,ÆäÓà²ÎÊıÖ»ÄÜÎª³£Êı²ÎÊı.
-	4.Èôm_nParam1Start<0, Ôò²ÎÊı1Îª³£Êı²ÎÊı,²ÎÊıµÈÓÚ*m_pfParam1;
-	5.Èôm_nParam1Start>=0,Ôò²ÎÊı1ÎªĞòÁĞÊı²ÎÊı,m_pfParam1Ö¸ÏòÒ»¸ö¸¡µãĞÍÊı×é,
-		Êı×é´óĞ¡Îªm_nNumData,Êı¾İÓĞĞ§·¶Î§Îªm_nParam1Start--m_nNumData.
-		ÔÚÊ±¼äÉÏm_pData[x] Óë m_pfParam1[x]ÊÇÒ»ÖÂµÄ
+æ³¨: 
+	1.å‡½æ•°è°ƒç”¨å‚æ•°ç”±m_pfParam1--m_pfParam4å¸¦å…¥,è‹¥ä¸ºNULLåˆ™è¡¨ç¤ºè¯¥å‚æ•°æ— æ•ˆ.
+	2.å½“ä¸€ä¸ªå‚æ•°æ— æ•ˆæ—¶,åˆ™å…¶åçš„æ‰€æœ‰å‚æ•°å‡æ— æ•ˆ.
+		å¦‚:m_pfParam2ä¸ºNULL,åˆ™m_pfParam3,m_pfParam4ä¸€å®šä¸ºNULL.
+	3.å‚æ•°1å¯ä»¥æ˜¯å¸¸æ•°å‚æ•°æˆ–åºåˆ—æ•°å‚æ•°,å…¶ä½™å‚æ•°åªèƒ½ä¸ºå¸¸æ•°å‚æ•°.
+	4.è‹¥m_nParam1Start<0, åˆ™å‚æ•°1ä¸ºå¸¸æ•°å‚æ•°,å‚æ•°ç­‰äº*m_pfParam1;
+	5.è‹¥m_nParam1Start>=0,åˆ™å‚æ•°1ä¸ºåºåˆ—æ•°å‚æ•°,m_pfParam1æŒ‡å‘ä¸€ä¸ªæµ®ç‚¹å‹æ•°ç»„,
+		æ•°ç»„å¤§å°ä¸ºm_nNumData,æ•°æ®æœ‰æ•ˆèŒƒå›´ä¸ºm_nParam1Start--m_nNumData.
+		åœ¨æ—¶é—´ä¸Šm_pData[x] ä¸ m_pfParam1[x]æ˜¯ä¸€è‡´çš„
 */
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-/* º¯ÊıÊä³ö
+/* å‡½æ•°è¾“å‡º
 
 __declspec(dllexport) int xxxxxxxx(CALCINFO* pData);	---------- A
 __declspec(dllexport) int xxxxxxxxVAR(CALCINDO* pData);	---------- B
 
-1.º¯ÊıÃû³ÆĞèÈ«²¿´óĞ´.
-2.º¯Êı±ØĞëÒÔÉÏÊöA,BÁ½ÖÖĞÎÊ½Ö®Ò»ÉùÃ÷,ÇëÓÃÊµ¼Êº¯ÊıÃû³ÆÌæ´úxxxxxxxx;
-	¶ÔÓÚC++³ÌĞò»¹Ğè°üÀ¨ÔÚ extern "C" {   } À¨ºÅÖĞ.
-3.ÉÏÊöĞÎÊ½AÓÃÓÚÉùÃ÷²»´ø²ÎÊı»òÈ«²¿²ÎÊıÎª³£ÊıµÄº¯Êı;
-	ĞÎÊ½BÓÃÓÚÉùÃ÷²ÎÊı1ÎªĞòÁĞÊıµÄº¯Êı;Á½ÖÖº¯ÊıµÄÇø±ğÔÚÓÚºóÕßÒÔVAR½áÎ².
-4.º¯Êı¼ÆËã½á¹ûÓÃpData->m_pResultBuf´ø»Ø.
-5.º¯Êı·µ»Ø-1±íÊ¾´íÎó»òÈ«²¿Êı¾İÎŞĞ§,·ñÔò·µ»ØµÚÒ»¸öÓĞĞ§ÖµÎ»ÖÃ,¼´:
-	m_pResultBuf[·µ»ØÖµ] -- m_pResultBuf[m_nNumData-1]¼äÎªÓĞĞ§Öµ.
-6.º¯ÊıÃû³Æ³¤¶È²»ÄÜ³¬¹ı15×Ö½Ú,¶¯Ì¬Á¬½Ó¿âÎÄ¼şÃû²»ÄÜ³¬¹ı9×Ö½Ú(²»°üÀ¨À©Õ¹Ãû),¶¯Ì¬¿âÃû³Æ²»ÄÜ½ĞSYSTEM,EXPLORER
-7.±àÒëÊ±ÇëÇëÑ¡Ôñ1×Ö½Ú¶ÔÆë
+1.å‡½æ•°åç§°éœ€å…¨éƒ¨å¤§å†™.
+2.å‡½æ•°å¿…é¡»ä»¥ä¸Šè¿°A,Bä¸¤ç§å½¢å¼ä¹‹ä¸€å£°æ˜,è¯·ç”¨å®é™…å‡½æ•°åç§°æ›¿ä»£xxxxxxxx;
+	å¯¹äºC++ç¨‹åºè¿˜éœ€åŒ…æ‹¬åœ¨ extern "C" {   } æ‹¬å·ä¸­.
+3.ä¸Šè¿°å½¢å¼Aç”¨äºå£°æ˜ä¸å¸¦å‚æ•°æˆ–å…¨éƒ¨å‚æ•°ä¸ºå¸¸æ•°çš„å‡½æ•°;
+	å½¢å¼Bç”¨äºå£°æ˜å‚æ•°1ä¸ºåºåˆ—æ•°çš„å‡½æ•°;ä¸¤ç§å‡½æ•°çš„åŒºåˆ«åœ¨äºåè€…ä»¥VARç»“å°¾.
+4.å‡½æ•°è®¡ç®—ç»“æœç”¨pData->m_pResultBufå¸¦å›.
+5.å‡½æ•°è¿”å›-1è¡¨ç¤ºé”™è¯¯æˆ–å…¨éƒ¨æ•°æ®æ— æ•ˆ,å¦åˆ™è¿”å›ç¬¬ä¸€ä¸ªæœ‰æ•ˆå€¼ä½ç½®,å³:
+	m_pResultBuf[è¿”å›å€¼] -- m_pResultBuf[m_nNumData-1]é—´ä¸ºæœ‰æ•ˆå€¼.
+6.å‡½æ•°åç§°é•¿åº¦ä¸èƒ½è¶…è¿‡15å­—èŠ‚,åŠ¨æ€è¿æ¥åº“æ–‡ä»¶åä¸èƒ½è¶…è¿‡9å­—èŠ‚(ä¸åŒ…æ‹¬æ‰©å±•å),åŠ¨æ€åº“åç§°ä¸èƒ½å«SYSTEM,EXPLORER
+7.ç¼–è¯‘æ—¶è¯·è¯·é€‰æ‹©1å­—èŠ‚å¯¹é½
 
 */
 
-//Ê¾Àıº¯Êı,Ê¹ÓÃÊ±ÓÃÊµ¼ÊÃû³ÆÌæ»»
+//ç¤ºä¾‹å‡½æ•°,ä½¿ç”¨æ—¶ç”¨å®é™…åç§°æ›¿æ¢
 __declspec(dllexport) int WINAPI MYMACLOSE(CALCINFO* pData);
 __declspec(dllexport) int WINAPI MYMAVAR(CALCINFO* pData);
 
@@ -176,41 +176,41 @@ __declspec(dllexport) int WINAPI MYMAVAR_CALC_PREV(CALCINFO* pData);
 
 
 // added by pp
-// ×Ô¶¨Òåº¯Êı
-// ´óĞ´Îª¿Éµ¥¶Àµ÷ÓÃµÄº¯Êı Ğ¡Ğ´Îª²»¿Éµ¥¶Àµ÷ÓÃµÄº¯Êı
-__declspec(dllexport) int WINAPI TT(CALCINFO* pData); // ²âÊÔÓÃ
-__declspec(dllexport) int WINAPI VERSION(CALCINFO* pData); // °æ±¾ Èç 1.013 1Ö÷°æ±¾ºÅ 01 Ğ¡°æ±¾ºÅ µÚÈıÎ»Ğ¡Êı 1 alpha(ÄÚ²â°æ) 2 beta(¹«²â°æ) 3 standard±ê×¼°æ 4-5±ê×¼ĞŞÕı°æ 9 release×îÖÕ°æ
-__declspec(dllexport) int WINAPI DATE(CALCINFO* pData); // ·¢²¼ÈÕÆÚ Èç20101231 1.013.20101231
+// è‡ªå®šä¹‰å‡½æ•°
+// å¤§å†™ä¸ºå¯å•ç‹¬è°ƒç”¨çš„å‡½æ•° å°å†™ä¸ºä¸å¯å•ç‹¬è°ƒç”¨çš„å‡½æ•°
+__declspec(dllexport) int WINAPI TT(CALCINFO* pData); // æµ‹è¯•ç”¨
+__declspec(dllexport) int WINAPI VERSION(CALCINFO* pData); // ç‰ˆæœ¬ å¦‚ 1.013 1ä¸»ç‰ˆæœ¬å· 01 å°ç‰ˆæœ¬å· ç¬¬ä¸‰ä½å°æ•° 1 alpha(å†…æµ‹ç‰ˆ) 2 beta(å…¬æµ‹ç‰ˆ) 3 standardæ ‡å‡†ç‰ˆ 4-5æ ‡å‡†ä¿®æ­£ç‰ˆ 9 releaseæœ€ç»ˆç‰ˆ
+__declspec(dllexport) int WINAPI DATE(CALCINFO* pData); // å‘å¸ƒæ—¥æœŸ å¦‚20101231 1.013.20101231
 
-__declspec(dllexport) int WINAPI JXZT(CALCINFO* pData); // ¾ùÏß×´Ì¬ @since 1.01
-__declspec(dllexport) int WINAPI JXYL(CALCINFO* pData); // ¾ùÏßÑ¹Á¦ @since 1.01 ·µ»Ø1-8Àà¾ùÏß
-__declspec(dllexport) int WINAPI JXZC(CALCINFO* pData); // ¾ùÏßÖ§³Å @since 1.01
-__declspec(dllexport) int WINAPI JXYL2(CALCINFO* pData); // ¾ùÏßÑ¹Á¦ @since 1.02 ·µ»Ø5 13 21 34 55 89 144 233
-__declspec(dllexport) int WINAPI JXZC2(CALCINFO* pData); // ¾ùÏßÖ§³Å @since 1.02
+__declspec(dllexport) int WINAPI JXZT(CALCINFO* pData); // å‡çº¿çŠ¶æ€ @since 1.01
+__declspec(dllexport) int WINAPI JXYL(CALCINFO* pData); // å‡çº¿å‹åŠ› @since 1.01 è¿”å›1-8ç±»å‡çº¿
+__declspec(dllexport) int WINAPI JXZC(CALCINFO* pData); // å‡çº¿æ”¯æ’‘ @since 1.01
+__declspec(dllexport) int WINAPI JXYL2(CALCINFO* pData); // å‡çº¿å‹åŠ› @since 1.02 è¿”å›5 13 21 34 55 89 144 233
+__declspec(dllexport) int WINAPI JXZC2(CALCINFO* pData); // å‡çº¿æ”¯æ’‘ @since 1.02
 
-__declspec(dllexport) int WINAPI kxian(CALCINFO* pData); // ³õÊ¼»¯KÏß ·ÖĞÍ ÒÔ¼°ÆäËûÊı¾İ  @since 1.01 @update 1.02
-__declspec(dllexport) int WINAPI kxg(CALCINFO* pData); // ²øK¸ßµã @since 1.01
-__declspec(dllexport) int WINAPI kxd(CALCINFO* pData); // ²øKµÍµã @since 1.01
-__declspec(dllexport) int WINAPI kxfx(CALCINFO* pData); // KÏß·½Ïò @since 1.01
+__declspec(dllexport) int WINAPI kxian(CALCINFO* pData); // åˆå§‹åŒ–Kçº¿ åˆ†å‹ ä»¥åŠå…¶ä»–æ•°æ®  @since 1.01 @update 1.02
+__declspec(dllexport) int WINAPI kxg(CALCINFO* pData); // ç¼ Ké«˜ç‚¹ @since 1.01
+__declspec(dllexport) int WINAPI kxd(CALCINFO* pData); // ç¼ Kä½ç‚¹ @since 1.01
+__declspec(dllexport) int WINAPI kxfx(CALCINFO* pData); // Kçº¿æ–¹å‘ @since 1.01
 
-__declspec(dllexport) int WINAPI bi(CALCINFO* pData); // ±Ê @since 1.01 @update 1.02
-__declspec(dllexport) int WINAPI bilast(CALCINFO* pData); // ¾àÀëÉÏÒ»±Ê½áÊøµÄÖÜÆÚ @since 1.02
-__declspec(dllexport) int WINAPI bigglast(CALCINFO* pData); // ¾àÀëÉÏµÚ1¸ö±Ê¸ßµãµÄÖÜÆÚ @since 1.02 
-__declspec(dllexport) int WINAPI biddlast(CALCINFO* pData); // ¾àÀëÉÏµÚ1¸ö±ÊµÍµãµÄÖÜÆÚ @since 1.02
+__declspec(dllexport) int WINAPI bi(CALCINFO* pData); // ç¬” @since 1.01 @update 1.02
+__declspec(dllexport) int WINAPI bilast(CALCINFO* pData); // è·ç¦»ä¸Šä¸€ç¬”ç»“æŸçš„å‘¨æœŸ @since 1.02
+__declspec(dllexport) int WINAPI bigglast(CALCINFO* pData); // è·ç¦»ä¸Šç¬¬1ä¸ªç¬”é«˜ç‚¹çš„å‘¨æœŸ @since 1.02 
+__declspec(dllexport) int WINAPI biddlast(CALCINFO* pData); // è·ç¦»ä¸Šç¬¬1ä¸ªç¬”ä½ç‚¹çš„å‘¨æœŸ @since 1.02
 
-__declspec(dllexport) int WINAPI duan(CALCINFO* pData); // ¶Î @since 1.02
-__declspec(dllexport) int WINAPI duanlast(CALCINFO* pData); // ¾àÀëÉÏÒ»¶Î½áÊøµÄÖÜÆÚ @since 1.02
-__declspec(dllexport) int WINAPI duangglast(CALCINFO* pData); // ¾àÀëÉÏµÚ1¸ö¶Î¸ßµãµÄÖÜÆÚ @since 1.02 
-__declspec(dllexport) int WINAPI duanddlast(CALCINFO* pData); // ¾àÀëÉÏµÚ1¸ö¶ÎµÍµãµÄÖÜÆÚ @since 1.02
+__declspec(dllexport) int WINAPI duan(CALCINFO* pData); // æ®µ @since 1.02
+__declspec(dllexport) int WINAPI duanlast(CALCINFO* pData); // è·ç¦»ä¸Šä¸€æ®µç»“æŸçš„å‘¨æœŸ @since 1.02
+__declspec(dllexport) int WINAPI duangglast(CALCINFO* pData); // è·ç¦»ä¸Šç¬¬1ä¸ªæ®µé«˜ç‚¹çš„å‘¨æœŸ @since 1.02 
+__declspec(dllexport) int WINAPI duanddlast(CALCINFO* pData); // è·ç¦»ä¸Šç¬¬1ä¸ªæ®µä½ç‚¹çš„å‘¨æœŸ @since 1.02
 
-__declspec(dllexport) int WINAPI zs(CALCINFO* pData); // ×ßÊÆÖĞÊà @since 1.02
-__declspec(dllexport) int WINAPI zszg(CALCINFO* pData); // ÖĞÊàZG @since 1.02
-__declspec(dllexport) int WINAPI zszd(CALCINFO* pData); // ÖĞÊàZD @since 1.02
-__declspec(dllexport) int WINAPI zsgg(CALCINFO* pData); // ÖĞÊàGG @since 1.02
-__declspec(dllexport) int WINAPI zsdd(CALCINFO* pData); // ÖĞÊàDD @since 1.02
-__declspec(dllexport) int WINAPI zszz(CALCINFO* pData); // ÖĞÊàÖĞÖá(Õğµ´¼àÊÓÆ÷) @since 1.02
-__declspec(dllexport) int WINAPI zskslast(CALCINFO* pData); // ¾àÀëÉÏÒ»¸öÖĞÊà¿ªÊ¼µÄÖÜÆÚ @since 1.02
-__declspec(dllexport) int WINAPI zsjslast(CALCINFO* pData); // ¾àÀëÉÏÒ»¸öÖĞÊà½áÊøµÄÖÜÆÚ @since 1.02
+__declspec(dllexport) int WINAPI zs(CALCINFO* pData); // èµ°åŠ¿ä¸­æ¢ @since 1.02
+__declspec(dllexport) int WINAPI zszg(CALCINFO* pData); // ä¸­æ¢ZG @since 1.02
+__declspec(dllexport) int WINAPI zszd(CALCINFO* pData); // ä¸­æ¢ZD @since 1.02
+__declspec(dllexport) int WINAPI zsgg(CALCINFO* pData); // ä¸­æ¢GG @since 1.02
+__declspec(dllexport) int WINAPI zsdd(CALCINFO* pData); // ä¸­æ¢DD @since 1.02
+__declspec(dllexport) int WINAPI zszz(CALCINFO* pData); // ä¸­æ¢ä¸­è½´(éœ‡è¡ç›‘è§†å™¨) @since 1.02
+__declspec(dllexport) int WINAPI zskslast(CALCINFO* pData); // è·ç¦»ä¸Šä¸€ä¸ªä¸­æ¢å¼€å§‹çš„å‘¨æœŸ @since 1.02
+__declspec(dllexport) int WINAPI zsjslast(CALCINFO* pData); // è·ç¦»ä¸Šä¸€ä¸ªä¸­æ¢ç»“æŸçš„å‘¨æœŸ @since 1.02
 
 #ifdef __cplusplus
 }

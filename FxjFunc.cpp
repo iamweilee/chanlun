@@ -1,4 +1,4 @@
-// FxjFunc.cpp : Defines the entry point for the DLL application.
+ï»¿// FxjFunc.cpp : Defines the entry point for the DLL application.
 //
 
 #include "stdafx.h"
@@ -24,28 +24,28 @@ BOOL APIENTRY DllMain( HANDLE hModule,
     return TRUE;
 }
 
-//¼ÆËãÊÕÅÌ¼ÛµÄ¾ù¼Û,Ò»¸ö³£Êı²ÎÊı,±íÊ¾¼ÆËãÖÜÆÚ
-//µ÷ÓÃ·½·¨:
+//è®¡ç®—æ”¶ç›˜ä»·çš„å‡ä»·,ä¸€ä¸ªå¸¸æ•°å‚æ•°,è¡¨ç¤ºè®¡ç®—å‘¨æœŸ
+//è°ƒç”¨æ–¹æ³•:
 //	MYMACLOSE(5)
 
 __declspec(dllexport) int WINAPI MYMACLOSE(CALCINFO* pData)
 {
 	float f,fTotal;
 	int nPeriod,i,j;
-	if(pData->m_pfParam1 &&					//²ÎÊı1ÓĞĞ§
-		pData->m_nParam1Start<0 &&			//²ÎÊı1Îª³£Êı
-		pData->m_pfParam2==NULL)			//½öÓĞÒ»¸ö²ÎÊı
+	if(pData->m_pfParam1 &&					//å‚æ•°1æœ‰æ•ˆ
+		pData->m_nParam1Start<0 &&			//å‚æ•°1ä¸ºå¸¸æ•°
+		pData->m_pfParam2==NULL)			//ä»…æœ‰ä¸€ä¸ªå‚æ•°
 	{
 		f = *pData->m_pfParam1;
-		nPeriod = (int)f;					//²ÎÊı1
+		nPeriod = (int)f;					//å‚æ•°1
 		if(nPeriod>0)
 		{
-			for(i=nPeriod-1;i<pData->m_nNumData;i++)	//¼ÆËãnPeriodÖÜÆÚµÄ¾ùÏß,Êı¾İ´ÓnPeriod-1¿ªÊ¼ÓĞĞ§
+			for(i=nPeriod-1;i<pData->m_nNumData;i++)	//è®¡ç®—nPeriodå‘¨æœŸçš„å‡çº¿,æ•°æ®ä»nPeriod-1å¼€å§‹æœ‰æ•ˆ
 			{
 				fTotal = 0.0f;
-				for(j=0;j<nPeriod;j++)					//ÀÛ¼Ó
+				for(j=0;j<nPeriod;j++)					//ç´¯åŠ 
 					fTotal += pData->m_pData[i-j].m_fClose;
-				pData->m_pResultBuf[i] = fTotal/nPeriod;						//Æ½¾ù
+				pData->m_pResultBuf[i] = fTotal/nPeriod;						//å¹³å‡
 			}
 			return nPeriod-1;
 		}
@@ -63,8 +63,8 @@ __declspec(dllexport) int WINAPI MYMACLOSE_CALC_PREV(CALCINFO* pData)
 	return 0;
 }
 
-//¼ÆËã¾ù¼Û,2¸ö²ÎÊı,²ÎÊı1Îª´ıÇó¾ùÏßµÄÊı¾İ,²ÎÊı2±íÊ¾¼ÆËãÖÜÆÚ
-//µ÷ÓÃ·½·¨:
+//è®¡ç®—å‡ä»·,2ä¸ªå‚æ•°,å‚æ•°1ä¸ºå¾…æ±‚å‡çº¿çš„æ•°æ®,å‚æ•°2è¡¨ç¤ºè®¡ç®—å‘¨æœŸ
+//è°ƒç”¨æ–¹æ³•:
 //	MYMAVAR(CLOSE-OPEN,5)
 
 __declspec(dllexport) int WINAPI MYMAVAR(CALCINFO* pData)
@@ -72,22 +72,22 @@ __declspec(dllexport) int WINAPI MYMAVAR(CALCINFO* pData)
 	float f,fTotal;
 	const float* pValue;
 	int nPeriod,nFirst,i,j;
-	if(pData->m_pfParam1 && pData->m_pfParam2 && 	//²ÎÊı1,2ÓĞĞ§
-		pData->m_nParam1Start>=0 &&					//²ÎÊı1ÎªĞòÁĞÊı
-		pData->m_pfParam3==NULL)					//ÓĞ2¸ö²ÎÊı
+	if(pData->m_pfParam1 && pData->m_pfParam2 && 	//å‚æ•°1,2æœ‰æ•ˆ
+		pData->m_nParam1Start>=0 &&					//å‚æ•°1ä¸ºåºåˆ—æ•°
+		pData->m_pfParam3==NULL)					//æœ‰2ä¸ªå‚æ•°
 	{
-		pValue = pData->m_pfParam1;					//²ÎÊı1
-		nFirst = pData->m_nParam1Start;				//ÓĞĞ§Öµ
+		pValue = pData->m_pfParam1;					//å‚æ•°1
+		nFirst = pData->m_nParam1Start;				//æœ‰æ•ˆå€¼
 		f = *pData->m_pfParam2;
-		nPeriod = (int)f;							//²ÎÊı2
+		nPeriod = (int)f;							//å‚æ•°2
 		if(nFirst>=0 && nPeriod>0)
 		{
 			for(i=nFirst+nPeriod-1;i<pData->m_nNumData;i++)
 			{
 				fTotal = 0.0f;
-				for(j=0;j<nPeriod;j++)					//ÀÛ¼Ó
+				for(j=0;j<nPeriod;j++)					//ç´¯åŠ 
 					fTotal += pData->m_pData[i-j].m_fClose;
-				pData->m_pResultBuf[i] = fTotal/nPeriod;						//Æ½¾ù
+				pData->m_pResultBuf[i] = fTotal/nPeriod;						//å¹³å‡
 			}
 			return nFirst+nPeriod-1;
 		}
@@ -144,7 +144,7 @@ __declspec(dllexport) int WINAPI DATE(CALCINFO* pData)
 __declspec(dllexport) int WINAPI JXZT(CALCINFO* pData) 
 {
 	int i, ss, nPeriod;
-	nPeriod = 233; // ´Ó233ÏßËãÆğ
+	nPeriod = 233; // ä»233çº¿ç®—èµ·
 	if (pData->m_nNumData>=nPeriod)
 	{
 		for(i=nPeriod-1; i<pData->m_nNumData; i++)
@@ -160,7 +160,7 @@ __declspec(dllexport) int WINAPI JXZT(CALCINFO* pData)
 __declspec(dllexport) int WINAPI JXYL(CALCINFO* pData)
 {
 	int i, ss, nPeriod;
-	nPeriod = 233; // ´Ó233ÏßËãÆğ
+	nPeriod = 233; // ä»233çº¿ç®—èµ·
 	if (pData->m_nNumData>=nPeriod)
 	{
 		for(i=nPeriod-1; i<pData->m_nNumData; i++)
@@ -177,7 +177,7 @@ __declspec(dllexport) int WINAPI JXYL(CALCINFO* pData)
 __declspec(dllexport) int WINAPI JXZC(CALCINFO* pData)
 {
 	int i, ss, nPeriod;
-	nPeriod = 233; // ´Ó233ÏßËãÆğ
+	nPeriod = 233; // ä»233çº¿ç®—èµ·
 	if (pData->m_nNumData>=nPeriod)
 	{
 		for(i=nPeriod-1; i<pData->m_nNumData; i++)
@@ -194,7 +194,7 @@ __declspec(dllexport) int WINAPI JXZC(CALCINFO* pData)
 __declspec(dllexport) int WINAPI JXYL2(CALCINFO* pData)
 {
 	int i, ss, nPeriod;
-	nPeriod = 233; // ´Ó233ÏßËãÆğ
+	nPeriod = 233; // ä»233çº¿ç®—èµ·
 	if (pData->m_nNumData>=nPeriod)
 	{
 		for(i=nPeriod-1; i<pData->m_nNumData; i++)
@@ -211,7 +211,7 @@ __declspec(dllexport) int WINAPI JXYL2(CALCINFO* pData)
 __declspec(dllexport) int WINAPI JXZC2(CALCINFO* pData)
 {
 	int i, ss, nPeriod;
-	nPeriod = 233; // ´Ó233ÏßËãÆğ
+	nPeriod = 233; // ä»233çº¿ç®—èµ·
 	if (pData->m_nNumData>=nPeriod)
 	{
 		for(i=nPeriod-1; i<pData->m_nNumData; i++)
@@ -232,7 +232,7 @@ __declspec(dllexport) int WINAPI kxian(CALCINFO* pData)
 		ChanlunCore::GetInstance()->initKx(pData);
 		ChanlunCore::GetInstance()->initFX();
 
-		// ·µ»Ø½á¹û¼¯
+		// è¿”å›ç»“æœé›†
 		int i=0;
 		KXDATA data = ChanlunCore::GetInstance()->getCkxData();
 		for(C_CKXIT it = data.begin(); it != data.end(); it++)

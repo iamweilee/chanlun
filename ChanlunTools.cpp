@@ -1,12 +1,12 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "ChanlunTools.h"
 
-//³õÊ¼»¯¾²Ì¬³ÉÔ± 
+//åˆå§‹åŒ–é™æ€æˆå‘˜ 
 ChanlunTools* ChanlunTools::instance = NULL;
 
 const int ChanlunTools::cjunx[8] = {5, 13, 21, 34, 55, 89, 144, 233};
 
-// ¹¹Ôìº¯Êı
+// æ„é€ å‡½æ•°
 ChanlunTools::ChanlunTools()
 {
 //nothing
@@ -21,7 +21,7 @@ ChanlunTools::~ChanlunTools()
 	}
 }
 
-// ¾²Ì¬ÊµÀı
+// é™æ€å®ä¾‹
 ChanlunTools* ChanlunTools::GetInstance()
 {
 	if(NULL == instance)
@@ -34,7 +34,7 @@ ChanlunTools* ChanlunTools::GetInstance()
 float ChanlunTools::ma_close(CALCINFO* pData, int num, int zq)
 {
 	float ret = 0;
-	for(int j=0;j<zq;j++)					//ÀÛ¼Ó
+	for(int j=0;j<zq;j++)					//ç´¯åŠ 
 		ret += pData->m_pData[num-j].m_fClose;
 	
 	return ret/zq;

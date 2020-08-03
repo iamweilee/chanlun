@@ -1,7 +1,7 @@
-/************************************************************************/
+ï»¿/************************************************************************/
 /* 
-²øÂÛ°æ±¾ĞÅÏ¢
-µ¥ÀıÄ£Ê½                                                                   
+ç¼ è®ºç‰ˆæœ¬ä¿¡æ¯
+å•ä¾‹æ¨¡å¼                                                                   
  */
 /************************************************************************/
 #ifndef __CHANLUNVERSION_H_INCLUDE
@@ -16,28 +16,28 @@ extern "C"
 class ChanlunVersion
 {
 private:
-	ChanlunVersion(); // ¹¹Ôìº¯Êı
-	~ChanlunVersion(); // Îö¹¹º¯Êı
-	static ChanlunVersion* instance; // Î¨Ò»ÊµÀı
-	static const int iVersion[5]; // °æ±¾ĞÅÏ¢
+	ChanlunVersion(); // æ„é€ å‡½æ•°
+	~ChanlunVersion(); // ææ„å‡½æ•°
+	static ChanlunVersion* instance; // å”¯ä¸€å®ä¾‹
+	static const int iVersion[5]; // ç‰ˆæœ¬ä¿¡æ¯
 
 public:
-	static ChanlunVersion* GetInstance(); // »ñÈ¡ÊµÀı 
+	static ChanlunVersion* GetInstance(); // è·å–å®ä¾‹ 
 	
 	/*
-	 *	°æ±¾ĞÅÏ¢
-	 *  Èç 1.013 1Ö÷°æ±¾ºÅ 01 Ğ¡°æ±¾ºÅ 
-	 *  µÚÈıÎ»Ğ¡Êı 1 alpha(ÄÚ²â°æ) 2 beta(¹«²â°æ) 3 standard±ê×¼°æ 4-5±ê×¼ĞŞÕı°æ 6 ÏŞÊ±°æ 7 ×¢²á°æ 8 ÌØ±ğ°æ 9 release×îÖÕ°æ
+	 *	ç‰ˆæœ¬ä¿¡æ¯
+	 *  å¦‚ 1.013 1ä¸»ç‰ˆæœ¬å· 01 å°ç‰ˆæœ¬å· 
+	 *  ç¬¬ä¸‰ä½å°æ•° 1 alpha(å†…æµ‹ç‰ˆ) 2 beta(å…¬æµ‹ç‰ˆ) 3 standardæ ‡å‡†ç‰ˆ 4-5æ ‡å‡†ä¿®æ­£ç‰ˆ 6 é™æ—¶ç‰ˆ 7 æ³¨å†Œç‰ˆ 8 ç‰¹åˆ«ç‰ˆ 9 releaseæœ€ç»ˆç‰ˆ
 	 */
 	float GetVersion();
 	
 	/*
-	 *	·¢²¼ÈÕÆÚ
+	 *	å‘å¸ƒæ—¥æœŸ
 	 */
 	int GetDate();
 	
 	/*
-	 *	×÷Õß
+	 *	ä½œè€…
 	 */
 	char* GetAuthor();
 	
@@ -47,7 +47,7 @@ public:
 	char* GetEmail();
 	
 	/*
-	 *	°æÈ¨
+	 *	ç‰ˆæƒ
 	 */
 	char* GetCopyRight();
 };
